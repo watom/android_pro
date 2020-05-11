@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_popupwindow"
+            style="@style/Button_Sample"
+            android:text="Activity的方法中直接调用Dialog" />
+
+        <Button
+            android:id="@+id/btn_popupmenu"
+            style="@style/Button_Sample"
+            android:text="按钮附近弹出popupmenu对话框" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_popupwindow_animation"
+            style="@style/Button_Sample"
+            android:text="从底部弹出" />
+
+        <Button
+            android:id="@+id/btn_popupwindow_custom_menu"
+            style="@style/Button_Sample"
+            android:text="自定义menu菜单item" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_BottomSheet"
+            style="@style/Button_Sample"
+            android:text="原生BottomSheet" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">我的应用</string>
+    <string name="app_created_time">2017.11.16</string>
+    <string name="app_name_01">网上国网</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="hello_world">我的主页!</string>
+
+    <string name="btn_scroll_view">ScrollView demo</string>
+    <string name="btn_list_view">ListView下拉刷新，上拉加载</string>
+
+    <string name="header_hint_refresh_normal">Pull to 刷新</string>
+    <string name="header_hint_refresh_ready">Release to 刷新</string>
+    <string name="header_hint_refresh_loading">Refreshing&#8230;</string>
+    <string name="header_hint_refresh_time">Time：</string>
+    <string name="footer_hint_load_normal">Load more</string>
+    <string name="footer_hint_load_ready">Release to load more</string>
+    <string name="phone_num">手机号码</string>
+    <string name="lottery_serial_code">奖券序列码</string>
+    <string name="when_lottery">抽奖时间</string>
+    <string name="my_lottery_log">我的抽奖记录</string>
+    <string name="lottery_log">抽奖记录</string>
+
+    <!--TimeLineActivity-->
+    <string name="TimeLineActivity_tip">&#160;&#160;使用RecyclerView实现了时间轴</string>
+    <!--二维码-->
+    <string name="btn_scan_local_pic">扫描相册图片</string>
+    <string name="btn_open_flashlight_text">打开手电筒</string>
+    <string name="btn_close_flashlight_text">关闭手电筒</string>
+    <string name="scan_fail">扫描失败!</string>
+    <!--音视频通话-->
+    <string name="agora_app_id">24385e0aaabc4bb6bec24a30a4ecc630</string>
+    <string name="design_discipline">设计原则包括：\n1.开闭原则(Open Close Principle);\n2.里氏代换原则(Liskov Substitution Principle);\n3.依赖倒转原则(Dependence Inversion Principle);\n4.接口隔离原则(Interface Segregation Principle);\n4.组合/聚合复用原则;\n5.迪米特法则(Law Of Demeter);\n6.单一职责原则(Single Responsibility Principle);\n</string>
+
+</resources>

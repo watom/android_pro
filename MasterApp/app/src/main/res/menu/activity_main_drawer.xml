@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_studio"
+            android:icon="@drawable/ic_menu_book"
+            android:title="studio" />
+        <item
+            android:id="@+id/nav_source"
+            android:icon="@drawable/ic_menu_sourcecode"
+            android:title="文件" />
+        <item
+            android:id="@+id/nav_stream"
+            android:icon="@drawable/ic_menu_video"
+            android:title="流媒体" />
+        <item
+            android:id="@+id/nav_voyage"
+            android:icon="@drawable/ic_menu_steamship"
+            android:title="voyage" />
+        <item
+            android:id="@+id/nav_earth"
+            android:icon="@drawable/ic_menu_earth"
+            android:title="browse" />
+        <item
+            android:id="@+id/nav_interest"
+            android:icon="@drawable/ic_menu_interest"
+            android:title="课程" />
+        <item
+            android:id="@+id/nav_favorite"
+            android:icon="@drawable/ic_menu_favorite"
+            android:title="兴趣" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_secure"
+                android:icon="@drawable/ic_menu_security"
+                android:title="安全中心" />
+            <item
+                android:id="@+id/nav_tools"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="更新" />
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_menu_settings"
+                android:title="个人设置" />
+        </menu>
+    </item>
+
+</menu>

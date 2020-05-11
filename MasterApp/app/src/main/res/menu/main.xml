@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_shortcut"
+        android:icon="@drawable/ic_sousuo"
+        android:orderInCategory="1"
+        android:title="快捷方式"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_scan"
+        android:orderInCategory="2"
+        android:title="扫一扫"
+        android:icon="@drawable/ic_scan"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_search"
+        android:orderInCategory="3"
+        android:icon="@drawable/ic_scan"
+        android:title="搜  索"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="4"
+        android:icon="@drawable/ic_scan"
+        android:title="布局边界"
+        app:showAsAction="never" />
+</menu>

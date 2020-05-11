@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/char_left_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:visibility="visible">
+
+        <View
+            android:id="@+id/char_left_indicator"
+            android:layout_width="8dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/chat_left_indicator" />
+
+        <TextView
+            android:id="@+id/char_left_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/char_left_indicator"
+            android:background="@drawable/shape_round_corner02"
+            android:gravity="left"
+            android:maxWidth="280dp"
+            android:minHeight="20dp"
+            android:padding="8dp"
+            android:text="Hello World ~" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/char_right_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/char_right_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_round_corner02"
+            android:gravity="left"
+            android:maxWidth="280dp"
+            android:minHeight="20dp"
+            android:padding="8dp"
+            android:text="Hello World ~" />
+
+        <View
+            android:id="@+id/char_right_indicator"
+            android:layout_width="8dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/char_right_content"
+            android:background="@drawable/chat_right_indicator" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

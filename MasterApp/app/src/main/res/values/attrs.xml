@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleBar_View">
+        <attr name="titlebar_text" format="string" />
+    </declare-styleable>
+
+    <!--TabLayout属性详解-->
+    <declare-styleable name="TabLayout">
+        <!--指示器颜色-->
+        <attr name="tabIndicatorColor" format="color" />
+        <!--指示器高度-->
+        <attr name="tabIndicatorHeight" format="dimension" />
+        <!--tabs距TabLayout开始位置的偏移量，但app:tabMode="scrollable"才生效-->
+        <attr name="tabContentStart" format="dimension" />
+        <!--仅是Tab背景，设置TabLayout背景用android:background-->
+        <attr name="tabBackground" format="reference" />
+        <!--默认fixed，所有Tab只能在屏幕内显示，超出会被挤压；scrollable,tab数量多会超出屏幕，可滑动-->
+        <attr name="tabMode">
+            <enum name="scrollable" value="0" />
+            <enum name="fixed" value="1" />
+        </attr>
+        <!--默认fill，tab填满TabLayout,但tabMode=“fixed”才生效；center，tabs位于TabLayout的中间-->
+        <attr name="tabGravity">
+            <enum name="fill" value="0" />
+            <enum name="center" value="1" />
+        </attr>
+        <!--Tab的最小宽度-->
+        <attr name="tabMinWidth" format="dimension" />
+        <!--Tab的最大宽度-->
+        <attr name="tabMaxWidth" format="dimension" />
+        <!--Tab文本设置样式-->
+        <attr name="tabTextAppearance" format="reference" />
+        <!--Tab未选中字体颜色-->
+        <attr name="tabTextColor" format="color" />
+        <!--Tab选中字体颜色-->
+        <attr name="tabSelectedTextColor" format="color" />
+        <!--Tab内填充相关-->
+        <attr name="tabPaddingStart" format="dimension" />
+        <attr name="tabPaddingTop" format="dimension" />
+        <attr name="tabPaddingEnd" format="dimension" />
+        <attr name="tabPaddingBottom" format="dimension" />
+        <attr name="tabPadding" format="dimension" />
+    </declare-styleable>
+
+    <!--CustomAssembleWidgetActivity标题栏的自定义属性-->
+    <declare-styleable name="CustomTitleBar">
+        <attr name="title_background_color" format="reference|integer" />
+        <attr name="left_button_visible" format="boolean" />
+        <attr name="right_button_visible" format="boolean" />
+        <attr name="title_text" format="string" />
+        <attr name="title_text_color" format="color" />
+        <attr name="title_text_drawable" format="reference|integer" />
+        <attr name="right_button_text" format="string" />
+        <attr name="right_button_text_color" format="color" />
+        <attr name="right_button_drawable" format="reference|integer" />
+        <attr name="left_button_text" format="string" />
+        <attr name="left_button_text_color" format="color" />
+        <attr name="left_button_drawable" format="reference|integer" />
+    </declare-styleable>
+    <declare-styleable name="CustomDescribeTitle">
+        <attr name="bg_color" format="reference|integer" />
+        <attr name="line_visible_right" format="boolean" />
+        <attr name="line_visible_left" format="boolean" />
+        <attr name="describe_title" format="string" />
+        <attr name="describe_title_color" format="color" />
+        <attr name="describe_title_drawable" format="reference|integer" />
+        <attr name="line_color_right" format="color" />
+        <attr name="line_color_left" format="color" />
+        <attr name="line_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="RatingBarView">
+        <attr name="starSize" format="dimension" />
+        <attr name="starSpace" format="dimension" />
+        <attr name="starCount" format="integer" />
+        <attr name="starEmpty" format="reference" />
+        <attr name="starFill" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="circleProgressBar">
+        <attr name="circleWidth" format="dimension" />
+        <attr name="betaAngle" format="integer" />
+        <attr name="firstColor" format="color" />
+        <attr name="secondColor" format="color" />
+    </declare-styleable>
+    <!--圆角ImageView自定义属性设置-->
+    <declare-styleable name="CircularBeadImageView">
+        <attr name="radius" format="dimension" />
+        <attr name="left_top_radius" format="dimension" />
+        <attr name="right_top_radius" format="dimension" />
+        <attr name="right_bottom_radius" format="dimension" />
+        <attr name="left_bottom_radius" format="dimension" />
+    </declare-styleable>
+</resources>

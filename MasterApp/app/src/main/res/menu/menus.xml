@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_item1"
+        android:title="请求图片"/>
+    <item
+        android:id="@+id/menu_item2"
+        android:title="请求Html代码"/>
+    <item
+        android:id="@+id/menu_item3"
+        android:title="请求Html代码加载到webView"/>
+
+</menu>

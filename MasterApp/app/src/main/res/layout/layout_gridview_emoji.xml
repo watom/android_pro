@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <!--columnWidth：定义每一列的固定宽度-->
+    <!--numColumns ：定义了展示的列数-->
+    <!--horizontalSpacing：定义了两列之间的水平间隔-->
+    <!--verticalSpacing ：定义两行之间的垂直间隔-->
+    <!--stretchMode：定义了列拓展填充有限闲置空间的方式-->
+    <GridView
+        android:id="@+id/gridview_emoji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:numColumns="7"
+        android:verticalSpacing="10dp"
+        android:stretchMode="columnWidth"/>
+
+</LinearLayout>

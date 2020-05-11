@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="3">
+        <TableRow
+            android:id="@+id/stock_list_header_row"
+           >
+            <View style="@style/list_item_cell_seperator_layout"/>
+            <TextView
+                android:id="@+id/redbag_phone_num"
+                android:text="@string/phone_num"
+               style="@style/excel_textview_style"
+                />
+            <View style="@style/list_item_cell_seperator_layout"/>
+            <TextView
+                android:id="@+id/redbag_lottery_serialcode"
+                android:text="@string/lottery_serial_code"
+                style="@style/excel_textview_style"
+                />
+            <View style="@style/list_item_cell_seperator_layout"/>
+            <TextView
+                android:id="@+id/redbag_when_lottery"
+                android:text="@string/when_lottery"
+                style="@style/excel_textview_style"
+                />
+            <View style="@style/list_item_cell_seperator_layout"/>
+        </TableRow>
+    </TableLayout>
+    <View style="@style/list_item_seperator_layout"/>
+</LinearLayout>

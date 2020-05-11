@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/show_timePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/aliceblue"
+            android:padding="10dp"
+            android:textSize="18sp" />
+
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:calendarViewShown="true"
+            android:endYear="2020"
+            android:spinnersShown="true"
+            android:startYear="2008" />
+
+        <TextView
+            android:id="@+id/show_datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/aliceblue"
+            android:padding="10dp"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="时间选择器" />
+
+        <TextView
+            android:id="@+id/show_datePicker01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/aliceblue"
+            android:padding="10dp"
+            android:textSize="18sp" />
+
+        <!-- 模拟时钟控件 -->
+        <AnalogClock
+            android:id="@+id/analogClock"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:hand_hour="@drawable/arrow_up"
+            android:hand_minute="@drawable/arrow_up" />
+
+        <!-- 数字时钟控件 -->
+        <DigitalClock
+            android:id="@+id/digitalClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <!-- 定义数字时钟 -->
+        <TextClock
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:format12Hour="yyyy年MM月dd日 H:mma EEEE"
+            android:textColor="#f0f"
+            android:textSize="10pt" />
+
+        <Chronometer
+            android:id="@+id/chronometer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#ff0000"
+            android:textSize="30dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dip"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="开始计时"
+                android:textSize="10dp" />
+
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="停止计时"
+                android:textSize="10dp" />
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="重置"
+                android:textSize="10dp" />
+
+            <Button
+                android:id="@+id/btn_format"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="更改格式"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+        <TimePicker
+            android:id="@+id/time_Picker"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:timePickerMode="spinner" />
+
+        <DatePicker
+            android:id="@+id/datePicker_02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            android:maxDate="12/31/2020"
+            android:minDate="01/01/2016"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:windowIsTranslucent="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_string2date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入时间：yyyyMMdd" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_string2date"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="转成Date" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_string2date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

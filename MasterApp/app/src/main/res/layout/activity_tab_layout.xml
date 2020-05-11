@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--最基本的TabLayout-->
+    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:describe_title="最基本的TabLayout" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:describe_title="TabLayout与Viewpager联动" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout02"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:tabBackground="@android:color/white"
+        app:tabIndicatorColor="@color/colorAccent"
+        app:tabIndicatorHeight="2dp"
+        app:tabSelectedTextColor="@android:color/holo_blue_light"
+        app:tabTextColor="@android:color/black" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</LinearLayout>

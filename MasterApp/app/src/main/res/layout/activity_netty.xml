@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_01"
+            style="@style/Button_Sample"
+            android:text="封装01" />
+
+        <Button
+            android:id="@+id/btn_02"
+            style="@style/Button_Sample"
+            android:text="封装02" />
+    </LinearLayout>
+
+</LinearLayout>

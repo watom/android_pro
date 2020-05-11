@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:describe_title="默认的progressBarStyle" />
+
+    <ProgressBar
+        android:id="@+id/bar_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:describe_title="progressBarStyle" />
+
+    <ProgressBar
+        android:id="@+id/bar_2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:describe_title="progressBarStyleLarge" />
+
+    <ProgressBar
+        android:id="@+id/bar_3"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:describe_title="progressBarStyleSmall" />
+
+    <ProgressBar
+        android:id="@+id/bar_4"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:describe_title="progressBarStyleSmallTitle" />
+
+    <ProgressBar
+        android:id="@+id/bar_5"
+        style="?android:attr/progressBarStyleSmallTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:describe_title="progressBarStyleInverse" />
+
+    <ProgressBar
+        android:id="@+id/bar_6"
+        style="?android:attr/progressBarStyleInverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:describe_title="progressBarStyleSmallInverse" />
+
+    <ProgressBar
+        android:id="@+id/bar_7"
+        style="?android:attr/progressBarStyleSmallInverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:describe_title="progressBarStyleLargeInverse" />
+
+    <ProgressBar
+        android:id="@+id/bar_8"
+        style="?android:attr/progressBarStyleLargeInverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:describe_title="progressBarStyleHorizontal" />
+
+    <ProgressBar
+        android:id="@+id/bar_9"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="0"
+        android:max="100"/>
+
+    <Button
+        android:id="@+id/progressBar_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="开始" />
+</LinearLayout>

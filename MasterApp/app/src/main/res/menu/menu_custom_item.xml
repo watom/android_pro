@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--
+    1：actionLayout用于指定你自定义的菜单布局；
+    2：必须是app:actionLayout，而不应该是android:actionLayout
+    否则onCreateOptionsMenu方法中的getActionView()方法会返回null
+    -->
+    <item
+        android:id="@+id/flavor"
+        android:title=""
+        app:actionLayout="@layout/layout_menu_item"
+        app:showAsAction="always" />
+     
+</menu>
