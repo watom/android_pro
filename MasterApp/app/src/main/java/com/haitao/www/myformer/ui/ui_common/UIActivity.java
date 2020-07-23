@@ -2,8 +2,8 @@ package com.haitao.www.myformer.ui.ui_common;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,8 +11,8 @@ import android.widget.ListView;
 
 import com.haitao.www.myformer.R;
 import com.haitao.www.myformer.nettys.netty.base.TestBaseAcitvity;
-import com.haitao.www.myformer.ui.ui_common.ModuleTest.UIModuleTestActivity;
-import com.haitao.www.myformer.ui.ui_common.ModuleTest.measureScreen.MeasureScreenActivity;
+import com.haitao.www.myformer.ui.ui_common.moduleTest.UIModuleTestActivity;
+import com.haitao.www.myformer.ui.ui_common.moduleTest.measureScreen.MeasureScreenActivity;
 import com.haitao.www.myformer.ui.ui_common.animation.AnimationActivity;
 import com.haitao.www.myformer.ui.ui_common.bitmap.BitmapActivity;
 import com.haitao.www.myformer.ui.ui_common.component.ComponentActivity;

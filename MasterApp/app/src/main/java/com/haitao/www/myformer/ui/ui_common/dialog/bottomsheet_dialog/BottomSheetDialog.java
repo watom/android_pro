@@ -6,13 +6,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.haitao.www.myformer.R;
 
 
-public class BottomSheetDialog extends android.support.design.widget.BottomSheetDialogFragment implements View.OnClickListener {
+public class BottomSheetDialog extends BottomSheetDialogFragment {
     private TextView btn_signUp;
     private EditText tv_label_name;
     private EditText tv_label_url;
+    private BottomSheetBehavior mBehavior;
 
     public BottomSheetDialog() {
         super();
@@ -20,37 +23,44 @@ public class BottomSheetDialog extends android.support.design.widget.BottomSheet
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
         View view = View.inflate(getActivity(), R.layout.layout_input_bookmark, null);
-        getChildView(view);
-
-        android.support.design.widget.BottomSheetDialog bottomSheetDialog = new android.support.design.widget.BottomSheetDialog(getActivity());
-        bottomSheetDialog.setContentView(view);
-        bottomSheetDialog.getDelegate().findViewById(android.support.design.R.id.design_bottom_sheet).setBackgroundColor(this.getResources().getColor(android.R.color.transparent));
-        bottomSheetDialog.show();
-
-        return bottomSheetDialog;
+        dialog.setContentView(view);
+        mBehavior = BottomSheetBehavior.from((View) view.getParent());
+        initChildView(view);
+        initEvent();
+        return dialog;
     }
 
-    private void getChildView(View parentView) {
+    private void initChildView(View parentView) {
         tv_label_name = parentView.findViewById(R.id.tv_labelName);
         tv_label_url = parentView.findViewById(R.id.tv_url);
         btn_signUp = parentView.findViewById(R.id.btn_sign_up_01);
-        btn_signUp.setOnClickListener(this);
+    }
+
+    private void initEvent() {
+        btn_signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.btn_sign_up_01:
+                        dismiss();
+                        if (onSignUpClickListener != null) {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("tv_label_name", tv_label_name.getText().toString().trim());
+                            bundle.putString("tv_label_url", tv_label_url.getText().toString().trim());
+                            onSignUpClickListener.onClick(bundle);
+                        }
+                        break;
+                }
+            }
+        });
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_sign_up_01:
-                dismiss();
-                if (onSignUpClickListener != null) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("tv_label_name", tv_label_name.getText().toString().trim());
-                    bundle.putString("tv_label_url", tv_label_url.getText().toString().trim());
-                    onSignUpClickListener.onClick(bundle);
-                }
-                break;
-        }
+    public void onStart() {
+        super.onStart();
+        mBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);//全屏展开
     }
 
     private OnSignUpClickListener onSignUpClickListener;

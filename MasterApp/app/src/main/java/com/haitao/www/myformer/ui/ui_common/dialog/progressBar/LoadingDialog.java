@@ -8,19 +8,18 @@ import android.view.KeyEvent;
 
 import com.haitao.www.myformer.R;
 
-
 /**
  *
  */
 public class LoadingDialog extends ProgressDialog {
 
     private Activity context;
-    public boolean isDismiss;
+    private boolean isDismiss;
 
     public LoadingDialog(Context context) {
         super(context, R.style.Dialog_BackgroundTransparent);
         this.context = (Activity) context;
-//		this.setCancelable(false);
+		this.setCancelable(false);
         this.setCanceledOnTouchOutside(true);//true：点击进度条外的其他地方，可以取消进度条。
     }
 
@@ -30,7 +29,7 @@ public class LoadingDialog extends ProgressDialog {
     }
 
     public void setCancerBack(boolean isCancerBack) {
-        isDismiss = isCancerBack;
+        isDismiss = !isCancerBack;
     }
 
     @Override

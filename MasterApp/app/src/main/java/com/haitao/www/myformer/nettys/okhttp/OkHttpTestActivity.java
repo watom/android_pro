@@ -1,8 +1,8 @@
 package com.haitao.www.myformer.nettys.okhttp;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -12,13 +12,11 @@ import com.haitao.www.myformer.utils.ToastUtils;
 import com.haitao.www.myformer.utils.NetUtils;
 
 import java.io.IOException;
-import java.text.Normalizer;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.Headers;
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;

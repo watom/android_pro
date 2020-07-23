@@ -10,7 +10,7 @@
     android:layout_height="wrap_content"
     app:describe_title="最基本的TabLayout" />
 
-    <android.support.design.widget.TabLayout
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         app:describe_title="TabLayout与Viewpager联动" />
 
-    <android.support.design.widget.TabLayout
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout02"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -30,7 +30,7 @@
         app:tabSelectedTextColor="@android:color/holo_blue_light"
         app:tabTextColor="@android:color/black" />
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/container_viewpager"
         android:layout_width="match_parent"
         android:layout_height="40dp"

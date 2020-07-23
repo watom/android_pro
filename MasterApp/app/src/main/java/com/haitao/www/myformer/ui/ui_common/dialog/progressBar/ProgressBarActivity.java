@@ -2,8 +2,8 @@ package com.haitao.www.myformer.ui.ui_common.dialog.progressBar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,7 +34,8 @@ public class ProgressBarActivity extends AppCompatActivity implements AdapterVie
         String s = content[position];
         switch (s) {
             case "转圈进度条":
-                new LoadingDialog(this).show();
+                LoadingDialog loadingDialog = new LoadingDialog(this);
+                loadingDialog.setCancerBack(true);
                 break;
             case "圆圈内数字进度条":
                 startActivity(new Intent(this, CircleProgressActivity.class));

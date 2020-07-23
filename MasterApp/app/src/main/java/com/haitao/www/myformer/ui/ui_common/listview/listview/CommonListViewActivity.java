@@ -1,6 +1,6 @@
 package com.haitao.www.myformer.ui.ui_common.listview.listview;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by Administrator on 2018/3/16 0016.

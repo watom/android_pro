@@ -7,9 +7,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -20,9 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.haitao.www.myformer.R;
-import com.haitao.www.myformer.function.kernel_module.barcode.BarCodeTestActivity;
 import com.haitao.www.myformer.function.kernel_module.barcode.encode.EncodingUtils;
-import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 public class BarCodeMainActivity extends AppCompatActivity {
 
@@ -95,7 +93,7 @@ public class BarCodeMainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT > 22) {
             if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 //先判断有没有权限 ，没有就在这里进行权限的申请
-                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA, Manifest.permission.CAPTURE_VIDEO_OUTPUT}, 0);
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA, Manifest.permission.CAPTURE_AUDIO_OUTPUT}, 0);
             } else {
                 //已经获取到摄像头权限了,继续业务代码
                 startScan();

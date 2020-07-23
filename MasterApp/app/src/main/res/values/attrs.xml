@@ -91,4 +91,20 @@
         <attr name="right_bottom_radius" format="dimension" />
         <attr name="left_bottom_radius" format="dimension" />
     </declare-styleable>
+    <!--自定义条目属性设置OptionItemView-->
+    <declare-styleable name="OptionItemView">
+        <attr name="title" format="string" />
+        <attr name="title_size" format="dimension" />
+        <attr name="title_color" format="color" />
+        <attr name="badge_count" format="integer" />
+        <attr name="start_src" format="reference|color" />
+        <attr name="end_src" format="reference|color" />
+        <attr name="desc" format="string" />
+        <attr name="desc_size" format="dimension" />
+        <attr name="desc_color" format="color" />
+        <attr name="dividerLine_left_pading" format="dimension" />
+        <attr name="dividerLine_right_pading" format="dimension" />
+        <attr name="show_arrow_indicator" format="boolean" />
+        <attr name="divider_align_to_title" format="boolean" />
+    </declare-styleable>
 </resources>

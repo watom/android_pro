@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <!--微信表情键盘的展示Emoji表情的Viewpage容器-->
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/keyboard_container_viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             android:padding="8dp"
             android:src="@drawable/ic_plus2" />
 
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/keyboard_tab_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"

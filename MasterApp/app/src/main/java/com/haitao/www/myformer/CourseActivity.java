@@ -2,16 +2,14 @@ package com.haitao.www.myformer;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.haitao.www.myformer.h5.h5_dome.WebViewPlatform;
@@ -125,7 +123,7 @@ public class CourseActivity extends AppCompatActivity implements AdapterView.OnI
         if (bottomSheetDialog == null) {
             bottomSheetDialog = new BottomSheetDialog();
         }
-        bottomSheetDialog.show(this.getSupportFragmentManager(), "ecologyTourDialogFragment");
+        bottomSheetDialog.show(this.getSupportFragmentManager(), "BottomSheetDialogFragment");
         bottomSheetDialog.setOnSignUpClickListener(new BottomSheetDialog.OnSignUpClickListener() {
             @Override
             public void onClick(Bundle bundle) {

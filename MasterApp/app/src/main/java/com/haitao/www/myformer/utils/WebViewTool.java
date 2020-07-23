@@ -42,6 +42,9 @@ public class WebViewTool {
         this.webView = webViewObj;
         initWebSettings(webViewObj, url);
 
+        //激活WebView为活跃状态，能正常执行网页的响应
+        webViewObj.onResume();
+
         //当页面被失去焦点被切换到后台不可见状态，需要执行onPause(),
         // 通过onPause()动作通知内核暂停所有的动作，比如DOM的解析、JavaScript执行等
         webViewObj.onPause();
@@ -194,8 +197,8 @@ public class WebViewTool {
             if (packageName.equals("com.alibaba.android.rimet")) {
                 //打开钉钉考勤界面
             }
-//            Intent intent = new Intent();
-//            intent.setClassName("com.alibaba.android.rimet", "com.alibaba.android.rimet.lightapp.runtime.activity.CommonWebViewActivity");
+            //Intent intent = new Intent();
+            //intent.setClassName("com.alibaba.android.rimet", "com.alibaba.android.rimet.lightapp.runtime.activity.CommonWebViewActivity");
             context.startActivity(intent);
         } else {
             ToastUtils.showToast(context, "手机未安装" + appName + "软件，正前往手机市场...");

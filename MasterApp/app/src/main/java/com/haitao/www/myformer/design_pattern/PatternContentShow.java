@@ -2,7 +2,7 @@ package com.haitao.www.myformer.design_pattern;
 
 import android.os.Bundle;
 import android.os.Message;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.webkit.WebView;
 
 import com.haitao.www.myformer.R;

@@ -2,11 +2,10 @@ package com.haitao.www.myformer.ui.ui_common.viewpager.adsalternate;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,7 +16,6 @@ import com.haitao.www.myformer.R;
 import com.haitao.www.myformer.utils.ImageUtils;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Created by Administrator on 2018/3/7 0007.

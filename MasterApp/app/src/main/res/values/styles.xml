@@ -106,12 +106,19 @@
     </style>
 
     <style name="mWidgetProgressBar" parent="@android:style/Widget.ProgressBar.Large">
-        <item name="android:minWidth">90dip</item>
-        <item name="android:maxWidth">90dip</item>
-        <item name="android:minHeight">90dip</item>
-        <item name="android:maxHeight">90dip</item>
+        <item name="android:minWidth">70dp</item>
+        <item name="android:maxWidth">70dp</item>
+        <item name="android:minHeight">70dp</item>
+        <item name="android:maxHeight">70dp</item>
     </style>
 
+    <!--windowBackground     背景颜色及透明程度
+        windowIsTranslucent  是否半透明
+        windowNoTitle        是否有标题
+        windowIsFloating     是否浮现在activity之上
+        backgroundDimEnabled 是否背景模糊
+        backgroundDimAmount  设置背景模糊的透明度（0~1）
+       -->
     <style name="Dialog_BackgroundTransparent" parent="android:Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
@@ -182,5 +189,18 @@
         <item name="android:minHeight">24dp</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:maxHeight">24dp</item>
+    </style>
+
+    <!--实下滑线样式-->
+    <style name="OptionLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">#F1F1F1</item>
+    </style>
+
+    <!--选项条目样式-->
+    <style name="OptionItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 </resources>

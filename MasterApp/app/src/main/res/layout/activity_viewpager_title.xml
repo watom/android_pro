@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/base_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <!--带下划线的用PagerTabStrip，不带下划线的用PagerTitleStrip-->
-        <android.support.v4.view.PagerTabStrip
+        <androidx.viewpager.widget.PagerTabStrip
             android:id="@+id/viewpager_title"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -17,7 +17,7 @@
             android:textColor="#ff0000"
             android:textSize="18sp">
 
-        </android.support.v4.view.PagerTabStrip>
-    </android.support.v4.view.ViewPager>
+        </androidx.viewpager.widget.PagerTabStrip>
+    </androidx.viewpager.widget.ViewPager>
 
 </LinearLayout>

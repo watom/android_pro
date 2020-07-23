@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.haitao.www.myformer">
 
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <!--二维码需要的权限-->
+    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 二维码需要的权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
@@ -11,36 +11,28 @@
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!--OkHttp权限-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- OkHttp权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <!-- SharedSDK添加必要的权限 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- SharedSDK添加必要的权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <!--写SD卡权限-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--读SD卡权限-->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!-- 短信验证登陆功能需要添加次权限来自动填充验证码，用不到可以去掉 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 写SD卡权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读SD卡权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 短信验证登陆功能需要添加次权限来自动填充验证码，用不到可以去掉 -->
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-
     <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
-
-    <!--获取手机本机信息-->
+    <uses-permission
+        android:name="android.permission.CHANGE_CONFIGURATION"
+        tools:ignore="ProtectedPermissions" /> <!-- 获取手机本机信息 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:allowBackup="true"
@@ -49,9 +41,11 @@
         android:roundIcon="@mipmap/ic_launcher_02"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name="projects.main.weclome.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -59,19 +53,31 @@
             android:name="projects.main.MainActivity"
             android:launchMode="singleTask" />
         <activity android:name=".SampleActivity" />
-        <activity android:name=".ui.ui_common.listview.XListView.ListViewActivity" />
-        <activity android:name=".ui.ui_common.listview.XListView.XListViewActivity" />
-        <activity android:name=".ui.ui_common.listview.XListView.XScrollViewActivity" />
-        <activity android:name=".ui.ui_common.ModuleTest.UIModuleTestActivity" />
+        <activity
+            android:name=".ui.ui_common.listview.XListView.ListViewActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".ui.ui_common.listview.XListView.XListViewActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".ui.ui_common.listview.XListView.XScrollViewActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".ui.ui_common.moduleTest.UIModuleTestActivity" />
         <activity android:name=".ui.ui_common.listview.ListViewCategory" />
         <activity android:name=".ui.ui_common.UIActivity" />
         <activity android:name=".logic.ModuleTestActivity" />
-        <activity android:name=".logic.LogicTest.DateTestActivity" />
-        <activity android:name=".logic.LogicTest.TimerTestActivity" />
-        <activity android:name=".ui.ui_common.ModuleTest.excellayout.ExcelTablayout" />
-        <activity android:name=".ui.ui_common.ModuleTest.timeLine.TimeLineActivity" />
-        <activity android:name=".ui.ui_common.ModuleTest.measureScreen.MeasureScreenActivity" />
-        <activity android:name=".ui.ui_common.fragment.InitialFragment.ContainerFragment" />
+        <activity
+            android:name=".logic.LogicTest.DateTestActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".logic.LogicTest.TimerTestActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".ui.ui_common.moduleTest.excellayout.ExcelTablayout" />
+        <activity android:name=".ui.ui_common.moduleTest.timeLine.TimeLineActivity" />
+        <activity android:name=".ui.ui_common.moduleTest.measureScreen.MeasureScreenActivity" />
+        <activity
+            android:name=".ui.ui_common.fragment.InitialFragment.ContainerFragment"
+            tools:ignore="InnerclassSeparator" />
         <activity android:name=".ui.ui_common.dialog.DialogActivity" />
         <activity android:name=".ui.ui_common.fragment.FragmentCategory" />
         <activity android:name=".ui.ui_common.dialog.popupwindow_dialog.PopupWindowDialog" />
@@ -86,7 +92,9 @@
         <activity android:name=".function.kernel_module.barcode.BarCodeTestActivity" />
         <activity android:name=".nettys.okhttp.OkHttpTestActivity" />
         <activity android:name=".ui.ui_common.listview.recyclerview.RecyclerViewTestActivity" />
-        <activity android:name=".logic.LogicTest.CountDownTimerActivity" />
+        <activity
+            android:name=".logic.LogicTest.CountDownTimerActivity"
+            tools:ignore="InnerclassSeparator" />
         <activity android:name=".function.kernel_module.barcode.activity.BarCodeMainActivity" />
         <activity android:name=".function.kernel_module.barcode.activity.CaptureActivity" />
         <activity android:name=".function.kernel_module.map.MapTestActivity" />
@@ -124,17 +132,17 @@
                     android:pathPrefix="/open_AD_page"
                     android:scheme="http" />
             </intent-filter>
-        </activity>
-
-        <!-- 集成ShareSDK的activity 开始（中间是ShareSDK的内容）-->
+        </activity> <!-- 集成ShareSDK的activity 开始（中间是ShareSDK的内容） -->
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize">
-            <!-- ShareSDK3.1.0版本之前才需要在MobUIShell下面注册此意图，3.1.0版本之后（包含3.1.0）不需要注册此intent-->
+
+            <!-- ShareSDK3.1.0版本之前才需要在MobUIShell下面注册此意图，3.1.0版本之后（包含3.1.0）不需要注册此intent -->
             <intent-filter>
                 <data android:scheme="tencent100371282" />
+
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.BROWSABLE" />
@@ -144,11 +152,10 @@
             <!-- 调用新浪原生SDK，需要注册的回调activity -->
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
-        </activity>
-        <!--如果集成QQ分享，或者使用QQ客户端来进行QQ空间的分享，须要在此处添加一个回调activity，对ACTION_VIEW事件的过滤器，其中的scheme是“tencent”前缀再开发者应用的加上appId。如果此Activity和过滤器不设置，则分享结束以后不能得到正确的回调。-->
+        </activity> <!-- 如果集成QQ分享，或者使用QQ客户端来进行QQ空间的分享，须要在此处添加一个回调activity，对ACTION_VIEW事件的过滤器，其中的scheme是“tencent”前缀再开发者应用的加上appId。如果此Activity和过滤器不设置，则分享结束以后不能得到正确的回调。 -->
         <activity
             android:name="cn.sharesdk.tencent.qq.ReceiveActivity"
             android:noHistory="true">
@@ -160,34 +167,31 @@
 
                 <data android:scheme="tencent100371282" />
             </intent-filter>
-        </activity>
-        <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
+        </activity> <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
         <meta-data
             android:name="Mob-AppKey"
             android:value="293edd8848c8a" />
         <meta-data
             android:name="Mob-AppSecret"
-            android:value="ed553d3e7b272e401cffa2749a137c91" />
-        <!--没有此activity在微信分享后回调会检查是否有此activity,没有将会报错。-->
+            android:value="ed553d3e7b272e401cffa2749a137c91" /> <!-- 没有此activity在微信分享后回调会检查是否有此activity,没有将会报错。 -->
         <activity
             android:name=".function.kernel_module.share.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <!--这两个类的路径是需要根据本地项目的包名来确定，如果路径错误，您将收不到微信和易信客户端的操作回调，因此ShareSDK也无法给予您操作回调。-->
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- 这两个类的路径是需要根据本地项目的包名来确定，如果路径错误，您将收不到微信和易信客户端的操作回调，因此ShareSDK也无法给予您操作回调。 -->
         <activity
             android:name=".function.kernel_module.share.yxapi.YXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <!--集成ShareSDK的activity 结束-->
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- 集成ShareSDK的activity 结束 -->
         <activity
             android:name=".logic.LogicTest.GsonApplyActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".ui.ui_common.listview.expandablelistView.MyExpandableListView"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -226,12 +230,17 @@
         <activity android:name=".nettys.netty.base.TestBaseAcitvity" />
         <activity android:name=".design_pattern.DesignPatternActivity" />
         <activity android:name=".design_pattern.PatternContentShow" />
-        <activity android:name=".ui.ui_common.ModuleTest.ratingbarview.RatingBarActivity" />
+        <activity android:name=".ui.ui_common.moduleTest.ratingbarview.RatingBarActivity" />
         <activity android:name=".nettys.baseNetInfo.BaseNetInfoActivity" />
         <activity android:name="projects.main.ZhenZhuMeiXueInput" />
         <activity android:name="projects.main.ZhenZhuMeiXueLog" />
         <activity android:name=".ui.ui_common.dialog.progressBar.PrimevalProgressActivity" />
         <activity android:name=".ui.ui_common.component.checkbox.CheckBoxActivity" />
-
+        <activity android:name=".ui.ui_common.moduleTest.dragView.DragViewActivity" />
+        <activity android:name=".ui.ui_common.moduleTest.dragView.DragGridView.DragGridViewActivity" />
+        <activity android:name=".ui.ui_common.moduleTest.dragView.DragRecyclerView.DragRecyclerViewActivity" />
+        <activity android:name=".ui.ui_common.moduleTest.dragView.ReliableDragGridView.BaseDragGridViewActivity" />
+        <activity android:name=".ui.ui_common.moduleTest.dragView.DragItemTouchHelper.ItemTouchHelperActivity" />
     </application>
+
 </manifest>

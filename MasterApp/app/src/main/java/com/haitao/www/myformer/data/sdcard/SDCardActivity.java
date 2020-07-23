@@ -1,14 +1,11 @@
 package com.haitao.www.myformer.data.sdcard;
 
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.haitao.www.myformer.R;
-
-import java.io.File;
 
 /**
  * 读取SD中的文件和往SD卡中写文件

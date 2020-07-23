@@ -11,17 +11,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.Settings;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,7 +31,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.haitao.www.myformer.CourseActivity;
 import com.haitao.www.myformer.R;
@@ -285,13 +284,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onUserLeaveHint() {
-        //点击了home键
+        //用户操作Activity进入后时调用此方法。
+        //点击了home键，系统回调此方法。但是当出现来电、灭屏等操作时，不会调用。
         super.onUserLeaveHint();
-        ToastUtils.showToast(this, "点击了home键");
-        if(MainActivity.this.isTaskRoot()){
-            //判断Activity是否是task根
-            moveTaskToBack(false);//该方法可将activity退到后台，注意不是finish()退出，效果基本等同于home键。
-        }
+        ToastUtils.showToast(this, "当前Activity被放入后台" );
     }
 
 

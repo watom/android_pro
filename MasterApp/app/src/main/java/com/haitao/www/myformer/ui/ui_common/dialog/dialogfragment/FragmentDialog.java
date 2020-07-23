@@ -2,8 +2,8 @@ package com.haitao.www.myformer.ui.ui_common.dialog.dialogfragment;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 
 /**
  * Created by Administrator on 2018/2/1 0001.

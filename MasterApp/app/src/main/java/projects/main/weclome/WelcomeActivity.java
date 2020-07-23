@@ -3,8 +3,8 @@ package projects.main.weclome;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
@@ -17,7 +17,6 @@ import android.widget.TextView;
 import com.dk.view.patheffect.PathTextView;
 import com.haitao.www.myformer.R;
 import com.haitao.www.myformer.utils.CountDownTimerUtils;
-import com.haitao.www.myformer.utils.DataUtil;
 import com.haitao.www.myformer.utils.Log;
 
 import projects.main.MainActivity;
@@ -57,7 +56,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * 设置倒计时功能
      */
     private void initData() {
-        mCountDownTimerUtils = new CountDownTimerUtils(tvSkip, 5000, 1000);
+        mCountDownTimerUtils = new CountDownTimerUtils(tvSkip, 3000, 1000);
         mCountDownTimerUtils.start();
         mCountDownTimerUtils.setCountDownListener(new CountDownTimerUtils.OnCountDownListener() {
             @Override

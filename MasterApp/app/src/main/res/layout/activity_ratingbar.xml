@@ -43,7 +43,7 @@
             android:numStars="5"
             android:stepSize="1.0" />
 
-        <com.haitao.www.myformer.ui.ui_common.ModuleTest.ratingbarview.RatingBarView2
+        <com.haitao.www.myformer.ui.ui_common.moduleTest.ratingbarview.RatingBarView2
             android:id="@+id/ratingBar2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
