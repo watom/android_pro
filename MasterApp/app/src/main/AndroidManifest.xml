@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- OkHttp权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- SharedSDK添加必要的权限 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /><!-- 网络定位权限 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 写SD卡权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读SD卡权限 -->
@@ -24,7 +24,8 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /><!-- GPS权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /><!--悬浮窗权限 -->
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission
         android:name="android.permission.CHANGE_CONFIGURATION"
@@ -35,6 +36,7 @@
         tools:ignore="ProtectedPermissions" />
 
     <application
+        android:name="projects.base.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_02"
         android:label="@string/app_name"
@@ -241,6 +243,8 @@
         <activity android:name=".ui.ui_common.moduleTest.dragView.DragRecyclerView.DragRecyclerViewActivity" />
         <activity android:name=".ui.ui_common.moduleTest.dragView.ReliableDragGridView.BaseDragGridViewActivity" />
         <activity android:name=".ui.ui_common.moduleTest.dragView.DragItemTouchHelper.ItemTouchHelperActivity" />
+        <activity android:name=".ui.ui_common.animation.BounceActivity" />
+        <activity android:name="projects.main.pages.FriendLifeActivity" />
     </application>
 
 </manifest>

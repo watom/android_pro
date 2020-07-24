@@ -27,7 +27,7 @@ public class AnimationActivity extends AppCompatActivity implements AdapterView.
     }
 
     private void initData(ListView view) {
-        content = new String[]{"Material","风速动画","漂浮动画"};
+        content = new String[]{"Material","风速动画","漂浮动画","弹跳动画"};
         ArrayAdapter stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, content);
         view.setAdapter(stringArrayAdapter);
         view.setOnItemClickListener(this);
@@ -45,6 +45,9 @@ public class AnimationActivity extends AppCompatActivity implements AdapterView.
                 break;
             case "漂浮动画":
                 startActivity(new Intent(this, MaterialThemeActivity.class));
+                break;
+            case "弹跳动画":
+                startActivity(new Intent(this, BounceActivity.class));
                 break;
         }
     }

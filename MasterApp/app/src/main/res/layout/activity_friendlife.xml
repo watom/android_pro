@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/cadetblue">
+        <!--横向布局-->
+        <cn.com.weather.cj.widget.view.HorizonView
+            android:id="@+id/horizon_view"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+        <!--左侧大布局右侧上下双横向布局-->
+        <cn.com.weather.cj.widget.view.LeftLargeView
+            android:id="@+id/ll_view"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+        <!--右侧大布局左侧上下双横向布局-->
+        <cn.com.weather.cj.widget.view.RightLargeView
+            android:id="@+id/rl_view"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+        <!--竖向布局-->
+        <cn.com.weather.cj.widget.view.VerticalView
+            android:id="@+id/vertical_view"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>
