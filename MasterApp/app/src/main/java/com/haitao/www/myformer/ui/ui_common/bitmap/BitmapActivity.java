@@ -39,9 +39,28 @@ public class BitmapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bitmap);
-
         intViews();
         zoom(); //缩放图片
+    }
+
+    private void intViews() {
+        imageview = (ImageView) findViewById(R.id.iv_bitmap_01);
+        imageview02 = (ImageView) findViewById(R.id.iv_bitmap_02);
+        tv_image_desc_02 = (TextView) findViewById(R.id.tv_image_desc_02);
+        imageview03 = (ImageView) findViewById(R.id.iv_bitmap_03);
+        tv_image_desc_03 = (TextView) findViewById(R.id.tv_image_desc_03);
+        imageview04 = (ImageView) findViewById(R.id.iv_bitmap_04);
+        tv_image_desc_04 = (TextView) findViewById(R.id.tv_image_desc_04);
+        imageview05 = (ImageView) findViewById(R.id.iv_bitmap_05);
+        tv_image_desc_05 = (TextView) findViewById(R.id.tv_image_desc_05);
+        imageview06 = (ImageView) findViewById(R.id.iv_bitmap_06);
+        tv_image_desc_06 = (TextView) findViewById(R.id.tv_image_desc_06);
+        //加载图片
+        loadImage("不同大小的图片", R.drawable.meimei01, imageview02, tv_image_desc_02);
+        loadImage("不同大小的图片", R.drawable.meimei01, imageview03, tv_image_desc_03);
+        loadImage("drawable-hdpi的图片", R.drawable.papa, imageview04, tv_image_desc_04);
+//        loadImage("drawable-xhdpi的图片", R.drawable.papa,imageview05, tv_image_desc_05);
+        loadImage("drawable-xhdpi的图片", "meihua_01.png", imageview06, tv_image_desc_06);
     }
 
     private void zoom() {
@@ -58,25 +77,7 @@ public class BitmapActivity extends AppCompatActivity {
         imageview.setImageBitmap(bp);
     }
 
-    private void intViews() {
-        imageview = (ImageView) findViewById(R.id.iv_bitmap_01);
-        imageview02 = (ImageView) findViewById(R.id.iv_bitmap_02);
-        tv_image_desc_02 = (TextView) findViewById(R.id.tv_image_desc_02);
-        imageview03 = (ImageView) findViewById(R.id.iv_bitmap_03);
-        tv_image_desc_03 = (TextView) findViewById(R.id.tv_image_desc_03);
-        imageview04 = (ImageView) findViewById(R.id.iv_bitmap_04);
-        tv_image_desc_04 = (TextView) findViewById(R.id.tv_image_desc_04);
-        imageview05 = (ImageView) findViewById(R.id.iv_bitmap_05);
-        tv_image_desc_05 = (TextView) findViewById(R.id.tv_image_desc_05);
-        imageview06 = (ImageView) findViewById(R.id.iv_bitmap_06);
-        tv_image_desc_06 = (TextView) findViewById(R.id.tv_image_desc_06);
-        //----------------加载图片----------------
-        loadImage("不同大小的图片", R.drawable.meimei01, imageview02, tv_image_desc_02);
-        loadImage("不同大小的图片", R.drawable.meimei01, imageview03, tv_image_desc_03);
-        loadImage("drawable-hdpi的图片", R.drawable.papa, imageview04, tv_image_desc_04);
-//        loadImage("drawable-xhdpi的图片", R.drawable.papa,imageview05, tv_image_desc_05);
-        loadImage("drawable-xhdpi的图片", "meihua_01.png", imageview06, tv_image_desc_06);
-    }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

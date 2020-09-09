@@ -12,12 +12,12 @@
         <Button
             android:id="@+id/btn_popupwindow"
             style="@style/Button_Sample"
-            android:text="Activity的方法中直接调用Dialog" />
+            android:text="Activity的方法中\n直接调用Dialog" />
 
         <Button
             android:id="@+id/btn_popupmenu"
             style="@style/Button_Sample"
-            android:text="按钮附近弹出popupmenu对话框" />
+            android:text="按钮附近弹出\npopupmenu对话框" />
     </LinearLayout>
 
     <LinearLayout

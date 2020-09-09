@@ -14,6 +14,7 @@ import com.haitao.www.myformer.function.FunctionImpActivity;
 import com.haitao.www.myformer.h5.H5HomeActivity;
 import com.haitao.www.myformer.logic.ModuleTestActivity;
 import com.haitao.www.myformer.nettys.NettysActivity;
+import com.haitao.www.myformer.sqLite.SQLiteActivity;
 import com.haitao.www.myformer.structure_design.StructureDesignActivity;
 import com.haitao.www.myformer.ui.ui_common.UIActivity;
 
@@ -52,6 +53,7 @@ public class SampleActivity extends AppCompatActivity implements AdapterView.OnI
                 startActivity(new Intent(this, UIActivity.class));
                 break;
             case "Data处理":
+                startActivity(new Intent(this, SQLiteActivity.class));
                 break;
             case "网络请求":
                 startActivity(new Intent(this, NettysActivity.class));

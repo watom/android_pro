@@ -15,6 +15,7 @@ import com.haitao.www.myformer.ui.ui_common.dialog.dialogUtils.DialogUtilsActivi
 import com.haitao.www.myformer.ui.ui_common.dialog.dialogfragment.FragmentDialog;
 import com.haitao.www.myformer.ui.ui_common.dialog.popupwindow_dialog.PopupWindowDialog;
 import com.haitao.www.myformer.ui.ui_common.dialog.progressBar.ProgressBarActivity;
+import com.haitao.www.myformer.ui.ui_common.dialog.toast.ToastActivity;
 
 /**
  * Created by Administrator on 2017/11/21 0021.
@@ -32,7 +33,7 @@ public class DialogActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     private void initData(ListView view) {
-        content = new String[]{"PopupWindowDialog","AlertDialogDemo","FragmentDialog","封装的Dialog工具","进度条"};
+        content = new String[]{"PopupWindowDialog","AlertDialogDemo","FragmentDialog","封装的Dialog工具","进度条","自定义Toast"};
         ArrayAdapter stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,content);
         view.setAdapter(stringArrayAdapter);
         view.setOnItemClickListener(this);
@@ -56,6 +57,9 @@ public class DialogActivity extends AppCompatActivity implements AdapterView.OnI
                 break;
             case "进度条":
                 startActivity(new Intent(this, ProgressBarActivity.class));
+                break;
+            case "自定义Toast":
+                startActivity(new Intent(this, ToastActivity.class));
                 break;
         }
     }

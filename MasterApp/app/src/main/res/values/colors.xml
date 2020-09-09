@@ -9,6 +9,7 @@
 
     <color name="common_content_bg_white">#ffffff</color>
     <color name="background">#F7F4F0</color>
+    <color name="translucent">#26ffffff</color>
     <color name="title_color">#333333</color>
     <color name="excel_color">#2B2B2B</color>
     <color name="excel_backgroud">#EE5859</color>

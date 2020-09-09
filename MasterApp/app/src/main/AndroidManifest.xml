@@ -47,8 +47,18 @@
         <activity android:name="projects.main.weclome.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter  android:autoVerify="true"
+                tools:targetApi="m">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http"
+                    android:host="com.haitao.www.mytestdemo"/>
             </intent-filter>
         </activity>
         <activity
@@ -134,7 +144,8 @@
                     android:pathPrefix="/open_AD_page"
                     android:scheme="http" />
             </intent-filter>
-        </activity> <!-- 集成ShareSDK的activity 开始（中间是ShareSDK的内容） -->
+        </activity>
+        <!-- 集成ShareSDK的activity 开始（中间是ShareSDK的内容） -->
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -157,7 +168,8 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity> <!-- 如果集成QQ分享，或者使用QQ客户端来进行QQ空间的分享，须要在此处添加一个回调activity，对ACTION_VIEW事件的过滤器，其中的scheme是“tencent”前缀再开发者应用的加上appId。如果此Activity和过滤器不设置，则分享结束以后不能得到正确的回调。 -->
+        </activity>
+        <!-- 如果集成QQ分享，或者使用QQ客户端来进行QQ空间的分享，须要在此处添加一个回调activity，对ACTION_VIEW事件的过滤器，其中的scheme是“tencent”前缀再开发者应用的加上appId。如果此Activity和过滤器不设置，则分享结束以后不能得到正确的回调。 -->
         <activity
             android:name="cn.sharesdk.tencent.qq.ReceiveActivity"
             android:noHistory="true">
@@ -169,7 +181,8 @@
 
                 <data android:scheme="tencent100371282" />
             </intent-filter>
-        </activity> <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
+        </activity>
+        <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
         <meta-data
             android:name="Mob-AppKey"
             android:value="293edd8848c8a" />
@@ -245,6 +258,14 @@
         <activity android:name=".ui.ui_common.moduleTest.dragView.DragItemTouchHelper.ItemTouchHelperActivity" />
         <activity android:name=".ui.ui_common.animation.BounceActivity" />
         <activity android:name="projects.main.pages.FriendLifeActivity" />
+        <activity android:name=".sqLite.SQLiteActivity" />
+        <activity android:name=".ui.ui_common.component.notification.NotificationActivity" />
+        <activity android:name=".ui.ui_common.component.keyboard.KeyBoardActivity" />
+        <activity android:name=".ui.ui_common.draw.DrawActivity" />
+        <activity android:name=".ui.ui_common.draw.HollowSimplyActivity" />
+        <activity android:name=".ui.ui_common.draw.DrawBaseActivity" />
+        <activity android:name=".ui.ui_common.dialog.toast.ToastActivity" />
+        <activity android:name=".logic.LogicTest.PhotoAlbumActivity" />
     </application>
 
 </manifest>

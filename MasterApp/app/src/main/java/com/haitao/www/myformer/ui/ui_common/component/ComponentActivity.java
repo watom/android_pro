@@ -15,6 +15,8 @@ import com.haitao.www.myformer.R;
 import com.haitao.www.myformer.ui.ui_common.component.checkbox.CheckBoxActivity;
 import com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomAssembleWidgetActivity;
 import com.haitao.www.myformer.ui.ui_common.component.imageview.ImageViewCategory;
+import com.haitao.www.myformer.ui.ui_common.component.keyboard.KeyBoardActivity;
+import com.haitao.www.myformer.ui.ui_common.component.notification.NotificationActivity;
 import com.haitao.www.myformer.ui.ui_common.moduleTest.ratingbarview.RatingBarActivity;
 import com.haitao.www.myformer.ui.ui_common.component.textview.SpannableStringActivity;
 import com.haitao.www.myformer.ui.ui_common.component.timepicker.DatePickerActivity;
@@ -36,7 +38,7 @@ public class ComponentActivity extends AppCompatActivity implements AdapterView.
     private GridView gridview;
     private ArrayList<Map<String, Object>> dataList;
     private int[] icon = {R.drawable.common_icon, R.drawable.common_icon};
-    private String[] label = {"ImageView", "TextView", "时间选择器", "日期选择器", "自定义组合控件","评价条","CheckBox","跑马灯"};
+    private String[] label = {"ImageView", "TextView", "时间选择器", "日期选择器", "自定义组合控件","评价条","CheckBox","跑马灯","通知栏","键盘高度"};
 
     /**
      * 关键代码SimpleAdapter的参数
@@ -111,7 +113,13 @@ public class ComponentActivity extends AppCompatActivity implements AdapterView.
                 startActivity(new Intent(this, CheckBoxActivity.class));
                 break;
             case "跑马灯":
-                startActivity(new Intent(this, CheckBoxActivity.class));
+//                startActivity(new Intent(this, CheckBoxActivity.class));
+                break;
+            case "通知栏":
+                startActivity(new Intent(this, NotificationActivity.class));
+                break;
+            case "键盘高度":
+                startActivity(new Intent(this, KeyBoardActivity.class));
                 break;
             default:
                 ToastUtils.showToast(this, "暂时未开通\"" + name + "\"功能");

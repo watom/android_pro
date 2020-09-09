@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_keyboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/view_search"
+        layout="@layout/view_search" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_search"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="键盘高：" />
+
+            <TextView
+                android:id="@+id/keyboard_high_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/show_keyboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="②显示键盘" />
+
+            <Button
+                android:id="@+id/hide_keyboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="③隐藏键盘" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

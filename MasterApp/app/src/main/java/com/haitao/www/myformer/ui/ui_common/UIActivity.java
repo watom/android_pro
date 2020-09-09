@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.haitao.www.myformer.R;
 import com.haitao.www.myformer.nettys.netty.base.TestBaseAcitvity;
+import com.haitao.www.myformer.ui.ui_common.draw.DrawActivity;
 import com.haitao.www.myformer.ui.ui_common.moduleTest.UIModuleTestActivity;
 import com.haitao.www.myformer.ui.ui_common.moduleTest.measureScreen.MeasureScreenActivity;
 import com.haitao.www.myformer.ui.ui_common.animation.AnimationActivity;
@@ -38,7 +39,7 @@ public class UIActivity extends AppCompatActivity implements AdapterView.OnItemC
     }
 
     private void initData(ListView view) {
-        content = new String[]{"ListView", "Dialog", "Fragment","ViewPager", "Animation","Component","分页","侧边栏","模块测试","测量屏幕","Bitmap","测试基类Activity"};
+        content = new String[]{"ListView", "Dialog", "Fragment","ViewPager", "Component","分页","侧边栏","模块测试","测量屏幕","Bitmap","绘图","Animation","测试基类Activity"};
         ArrayAdapter stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,content);
         view.setAdapter(stringArrayAdapter);
         view.setOnItemClickListener(this);
@@ -79,6 +80,9 @@ public class UIActivity extends AppCompatActivity implements AdapterView.OnItemC
                 break;
             case "Bitmap":
                 startActivity(new Intent(this, BitmapActivity.class));
+                break;
+            case "绘图":
+                startActivity(new Intent(this, DrawActivity.class));
                 break;
             case "测试基类Activity":
                 startActivity(new Intent(this, TestBaseAcitvity.class));

@@ -56,7 +56,7 @@ public class WelcomeActivity extends AppCompatActivity {
      * 设置倒计时功能
      */
     private void initData() {
-        mCountDownTimerUtils = new CountDownTimerUtils(tvSkip, 3000, 1000);
+        mCountDownTimerUtils = new CountDownTimerUtils(tvSkip, 1000, 1000);
         mCountDownTimerUtils.start();
         mCountDownTimerUtils.setCountDownListener(new CountDownTimerUtils.OnCountDownListener() {
             @Override

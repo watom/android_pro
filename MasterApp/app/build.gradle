@@ -19,6 +19,44 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+//        applicationVariants.all {
+//            //判断是release还是debug版本
+//            def buildType = it.buildType.name
+//            def fileName
+//            //下面的channel是获取渠道号，你获取渠道号不一定会和我的代码一样，因为有可能你的渠道名称的规则和我的不一样，我的规则是${渠道名}-${applicationId},所以我是这样取的。
+//            def channel = it.productFlavors[0].name.split("-")[0]
+//            //获取当前时间的"YYYY-MM-dd"格式。
+//            def createTime = new Date().format("YYYY-MM-dd", TimeZone.getTimeZone("GMT+08:00"))
+//            //只对Release包起作用，如果不是Release包则不变更输出路径，否则可能导致AS无法自动安装debug包。
+//            if (buildType == "release") {
+//                it.getPackageApplication().outputDirectory = new File(project.rootDir.absolutePath + "/apks/${it.productFlavors[0].applicationId}/${createTime}")
+//            }
+//            it.outputs.each {
+//                //只对Release包起作用，如果不是Release包则不变更名称。
+//                if (buildType == "release") {
+//                    //我此处的命名规则是：渠道名_项目名_版本名_创建时间_构建类型.apk
+//                    fileName = "${channel}_项目名称_v${defaultConfig.versionName}_${createTime}-${buildType}.apk"
+//                    //将名字打印出来，以便及时查看是否满意。
+//                    println "文件名：-----------------${fileName}"
+//                    //重新对apk命名。(适用于Gradle4.0以下版本)
+//                    //it.outputFile = new File(it.outputFile.parent, fileName)
+//                    //重新对apk命名。(适用于Gradle4.0（含）以上版本)如果你Gradle版本是4.0以下版本则将上面的一行代码放开并注释下面的这一行。
+//                    it.outputFileName = fileName
+//                }
+//            }
+//        }
+
+        def buildTime = new Date().format("YYYYMMddHHmm", TimeZone.getTimeZone("GMT+08:00"))
+        applicationVariants.all { variant ->
+            variant.outputs.all { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    // apk_渠道名-版本号-版本名称-编译时间.apk
+                    def fileName = "watom Pro-${variant.buildType.name}-${defaultConfig.versionCode}-v${defaultConfig.versionName}-${buildTime}.apk"
+                    outputFileName = fileName
+                }
+            }
+        }
     }
 
     compileOptions {
@@ -38,6 +76,7 @@ dependencies {
     implementation files('libs/nineoldandroids.jar')
     implementation files('libs/gson-2.2.4.jar')
     implementation project(":draggridviewlib")
+//    implementation project(":fileselectlibrary")
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
@@ -54,8 +93,7 @@ dependencies {
 
 
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
-
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.8'
+    implementation 'com.github.huburt-Hu:NewbieGuide:v2.4.0'
+    implementation 'com.github.lovetuzitong:MultiImageSelector:1.2'
 }

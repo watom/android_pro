@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.haitao.www.mytestdemo",
+    "sha256_cert_fingerprints": ["5E:4D:C7:8B:D5:FC:9D:4B:E5:C2:98:20:FE:F9:D9:6F:CA:65:B7:82:9C:63:05:13:8F:BD:59:53:58:DA:3F:9F"]
+  }
+}]

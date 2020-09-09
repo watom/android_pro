@@ -8,11 +8,15 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+
 import androidx.annotation.Nullable;
+
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuPopupHelper;
 import androidx.appcompat.widget.PopupMenu;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -216,8 +220,7 @@ public class PopupWindowDialog extends AppCompatActivity implements View.OnClick
      */
     private void showPopupWindow() {
         parentView = getWindow().getDecorView();//得到当前界面的View对象
-        View contentView = LayoutInflater.from(this).inflate(
-                R.layout.popupwindow_dialog_layout, null);
+        View contentView = LayoutInflater.from(this).inflate(R.layout.popupwindow_dialog_layout, null);
         popupWindow = new PopupWindow(contentView,
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);//必须设置宽和高，否则不显示任何东西
 //        popupWindow.update();//更新popupWindow的状态

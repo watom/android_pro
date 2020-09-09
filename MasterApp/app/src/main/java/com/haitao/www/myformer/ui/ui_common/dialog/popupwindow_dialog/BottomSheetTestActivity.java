@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.haitao.www.myformer.R;
+import com.haitao.www.myformer.utils.KeyBoardUtil;
 import com.haitao.www.myformer.utils.ToastUtils;
 
 import java.lang.reflect.Field;
@@ -83,8 +84,14 @@ public class BottomSheetTestActivity extends AppCompatActivity implements View.O
 
         //把这个底部菜单和一个BottomSheetBehavior关联起来
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
+
         //通过BottomSheetBehavior控制bottom_sheet_layout布局的显示和隐藏
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            /**
+             * 监听拖动事件
+             * @param bottomSheet
+             * @param newState
+             */
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 switch (newState) {
@@ -108,6 +115,11 @@ public class BottomSheetTestActivity extends AppCompatActivity implements View.O
                 }
             }
 
+            /**
+             * 监听状态变化
+             * @param bottomSheet
+             * @param slideOffset
+             */
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
 
@@ -161,11 +173,12 @@ public class BottomSheetTestActivity extends AppCompatActivity implements View.O
         imm.toggleSoftInput(0, b ? InputMethodManager.SHOW_FORCED : InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
+    private LinearLayout llInputEditor;
     private void wechatKeyboard() {
         TabLayout keyboardTabLayout = findViewById(R.id.keyboard_tab_layout);
         ViewPager keyboardContainerViewpager = findViewById(R.id.keyboard_container_viewpager);
         LinearLayout roundPointGroup = findViewById(R.id.dot_viewgroup);
-        LinearLayout llInputEditor = findViewById(R.id.ll_input_editor);
+        llInputEditor = findViewById(R.id.ll_input_editor);
 
         btn_set_mode_voice = findViewById(R.id.btn_set_mode_voice);
         btn_set_mode_keyboard_01 = findViewById(R.id.btn_set_mode_keyboard_01);
@@ -183,13 +196,20 @@ public class BottomSheetTestActivity extends AppCompatActivity implements View.O
         //设置圆点指示器
         keyboardFragmentAdapter.setupWithPagerPoint(keyboardContainerViewpager, roundPointGroup);
 
-        //设置表情键盘的展开高度。根据软件键盘的高度来确定
+        //设置表情键盘的展开高度。根据软键盘的高度来确定
         //当为STATE_COLLAPSED（折叠）状态的时候bottom_sheet_layout残留的高度，默认为0px。
         int inputEditorHeight = getViewHeight(llInputEditor);
-        int softInputHeight = getSoftInputHeight();
 
         bottomSheetBehavior.setPeekHeight(inputEditorHeight);
-        setKeyboardHeight(963);
+
+        KeyBoardUtil keyBoardUtil = new KeyBoardUtil(this);
+        keyBoardUtil.getSoftKeyboardHigh(this, new KeyBoardUtil.OnSoftKeyboardChangeListener() {
+            @Override
+            public void onSoftKeyBoardChange(int softKeybardHeight, boolean visible) {
+                setKeyboardHeight(softKeybardHeight);
+            }
+        });
+
     }
 
     private int height;
@@ -220,92 +240,4 @@ public class BottomSheetTestActivity extends AppCompatActivity implements View.O
         llKeyboard.setLayoutParams(linearParams); //使设置好的布局参数应用到控件
     }
 
-
-    /**
-     * 获取键盘的高
-     */
-    private int getSoftInputHeight() {
-        int realKeyboardHeight = 0;
-        final TextView tv_input_attribute = (TextView) findViewById(R.id.tv_input_attribute);
-        final View myLayout = getWindow().getDecorView();
-        parentLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            private int statusBarHeight;
-
-            @Override
-            public void onGlobalLayout() {
-                Rect r = new Rect();
-                // 使用最外层布局填充，进行测算计算
-                parentLayout.getWindowVisibleDisplayFrame(r);
-                int screenHeight = myLayout.getRootView().getHeight();
-                int heightDiff = screenHeight - (r.bottom - r.top);
-                if (heightDiff > 100) {
-                    // 如果超过100个像素，它可能是一个键盘。获取状态栏的高度
-                    statusBarHeight = 0;
-                }
-                try {
-                    Class<?> c = Class.forName("com.android.internal.R$dimen");
-                    Object obj = c.newInstance();
-                    Field field = c.getField("status_bar_height");
-                    int x = Integer.parseInt(field.get(obj).toString());
-                    statusBarHeight = BottomSheetTestActivity.this.getResources().getDimensionPixelSize(x);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                height = heightDiff - statusBarHeight;
-                tv_input_attribute.append("keyboard height(单位像素) = " + height + "\r\n");
-            }
-        });
-//        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//        List<InputMethodInfo> inputMethodList = imm.getInputMethodList();
-//        for (int i = 0; i < inputMethodList.size(); i++) {
-//            tv_input_attribute.append(inputMethodList.get(i).toString());
-//        }
-        realKeyboardHeight = height;
-        return realKeyboardHeight;
-    }
-
-//    private int getSupportSoftInputHeight() {
-//        Rect r = new Rect();
-//        this.getWindow().getDecorView().getWindowVisibleDisplayFrame(r);
-//        int screenHeight = mActivity.getWindow().getDecorView().getRootView().getHeight();
-//        int softInputHeight = screenHeight - r.bottom;
-//        if (Build.VERSION.SDK_INT >= 20) {
-//            // When SDK Level >= 20 (Android L),
-//            // the softInputHeight will contain the height of softButtonsBar (if has)
-//            softInputHeight = softInputHeight - getSoftButtonsBarHeight();
-//        }
-//        if (softInputHeight < 0) {
-//            Log.w("EmotionInputDetector", "Warning: value of softInputHeight is below zero!");
-//        }
-//        if (softInputHeight > 0) {
-//            PrefUtils.putInt("softInputHeight", softInputHeight,this);
-//        }
-//        return softInputHeight;
-//    }
-
-//    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-//    private int getSoftButtonsBarHeight() {
-//        DisplayMetrics metrics = new DisplayMetrics();
-//        this.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-//        int usableHeight = metrics.heightPixels;
-//        this.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
-//        int realHeight = metrics.heightPixels;
-//        if (realHeight > usableHeight) {
-//            return realHeight - usableHeight;
-//        } else {
-//            return 0;
-//        }
-//    }
-
-    private int getSoftInputHeight2() {
-        Rect r = new Rect();
-        //decorView是window中的最顶层view，可以从window中通过getDecorView获取到decorView。
-        //通过decorView获取到程序显示的区域，包括标题栏，但不包括状态栏。
-        this.getWindow().getDecorView().getWindowVisibleDisplayFrame(r);
-        //获取屏幕的高度
-        int screenHeight = this.getWindow().getDecorView().getRootView().getHeight();
-        //计算软件盘的高度
-        int softInputHeight = screenHeight - r.bottom;
-        return softInputHeight;
-    }
 }
