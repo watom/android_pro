@@ -14,7 +14,7 @@
         android:id="@+id/button_send_notification02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="生成通知栏消息02"/>
+        android:text="生成通知栏消息并拉起自身App"/>
 
     <Button
         android:id="@+id/button_send_notification03"
@@ -32,6 +32,16 @@
         android:id="@+id/button_send_notification05"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="通知栏消息拉起另一个App"/>
+        android:text="点击通知栏消息拉起另一个App"/>
+    <Button
+        android:id="@+id/clean_one_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="清除通知栏一条消息"/>
+    <Button
+        android:id="@+id/clean_all_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="清空通知栏所有消息"/>
 
 </LinearLayout>

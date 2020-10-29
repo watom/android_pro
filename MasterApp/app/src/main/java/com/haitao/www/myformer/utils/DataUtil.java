@@ -13,8 +13,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 
 public class DataUtil {
     private static Gson gson=new Gson();
@@ -25,7 +25,6 @@ public class DataUtil {
      * @return boolean
      */
     public static boolean isEmpty(Object obj) {
-
         return obj == null || obj.equals("");
     }
     /**
@@ -166,6 +165,30 @@ public class DataUtil {
         return timeNow;
     }
 
+    public static String getTimeDivisionStr() {
+        String timeDivisionStr = "";
+        Date date = new Date();
+        SimpleDateFormat df = new SimpleDateFormat("HH");
+        String str = df.format(date);
+        int a = Integer.parseInt(str);
+        if (a > 0 && a <= 6) {
+            timeDivisionStr = "您好!";
+        }
+        if (a > 6 && a <= 12) {
+            timeDivisionStr = "上午好!";
+        }
+        if (a > 12 && a <= 13) {
+            timeDivisionStr = "中午好!";
+        }
+        if (a > 13 && a <= 18) {
+            timeDivisionStr = "下午好!";
+        }
+        if (a > 18 && a <= 24) {
+            timeDivisionStr = "晚上好!";
+        }
+        return timeDivisionStr;
+    }
+
     /**
      * 转义正则特殊字符 （$()*+.[]?\^{},|）
      */
@@ -179,5 +202,20 @@ public class DataUtil {
             }
         }
         return keyword;
+    }
+
+    /****
+     * 计算文件大小
+     */
+    public static String getFileSize(Long length) {
+        if (length >= 1048576) {
+            return (length / 1048576) + "MB";
+        } else if (length >= 1024) {
+            return (length / 1024) + "KB";
+        } else if (length < 1024) {
+            return length + "B";
+        } else {
+            return "0KB";
+        }
     }
 }

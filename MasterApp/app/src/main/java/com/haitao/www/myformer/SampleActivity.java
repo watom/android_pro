@@ -40,7 +40,7 @@ public class SampleActivity extends AppCompatActivity implements AdapterView.OnI
 
     private void initData(ListView view) {
         content = new String[]{"UI设计", "Data处理", "网络请求", "设计模式", "架构设计", "逻辑单元","功能模块","H5"};
-        ArrayAdapter stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, content);
+        ArrayAdapter stringArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, content);
         view.setAdapter(stringArrayAdapter);
         view.setOnItemClickListener(this);
     }

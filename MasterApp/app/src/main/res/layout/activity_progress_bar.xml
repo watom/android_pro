@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.CustomDescribeTitle
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:describe_title="默认的progressBarStyle" />
@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.CustomDescribeTitle
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:describe_title="progressBarStyle" />
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.CustomDescribeTitle
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:describe_title="progressBarStyleLarge" />
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.CustomDescribeTitle
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:describe_title="progressBarStyleSmall" />
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.CustomDescribeTitle
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:describe_title="progressBarStyleSmallTitle" />
@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.CustomDescribeTitle
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:describe_title="progressBarStyleInverse" />
@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.CustomDescribeTitle
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:describe_title="progressBarStyleSmallInverse" />
@@ -81,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.CustomDescribeTitle
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:describe_title="progressBarStyleLargeInverse" />
@@ -92,7 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.CustomDescribeTitle
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:describe_title="progressBarStyleHorizontal" />

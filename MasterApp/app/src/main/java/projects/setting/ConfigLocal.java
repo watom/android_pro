@@ -1,5 +1,10 @@
 package projects.setting;
 
+/**
+ * 项目配置参数文件
+ * 原理：使用枚举实现工厂模式。使用工厂模式实现三级管理项目配置参数
+ * 例如： ConfigLocal.XiAn.INTRANET.isDeveloping(true);   //西安内网开发地址
+ */
 public abstract class ConfigLocal {
     public static String APP_SYS_ID;
     public static String APP_LOGIN_ADDRESS;
@@ -25,7 +30,7 @@ public abstract class ConfigLocal {
             }
         };
 
-        public abstract void isRelease(boolean isBeta);
+        public abstract void isRelease(boolean isBeta); //如果枚举类具有抽象方法，则枚举类的每个实例都必须实现它。
     }
 
     public enum XiAn {

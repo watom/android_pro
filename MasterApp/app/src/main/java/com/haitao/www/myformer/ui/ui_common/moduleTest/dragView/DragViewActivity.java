@@ -10,8 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.haitao.www.myformer.R;
-import com.haitao.www.myformer.ui.ui_common.moduleTest.dragView.DragGridView.DragGridViewActivity;
-import com.haitao.www.myformer.ui.ui_common.moduleTest.dragView.DragItemTouchHelper.ItemTouchHelperActivity;
 import com.haitao.www.myformer.ui.ui_common.moduleTest.dragView.DragRecyclerView.DragRecyclerViewActivity;
 import com.haitao.www.myformer.ui.ui_common.moduleTest.dragView.ReliableDragGridView.BaseDragGridViewActivity;
 import com.haitao.www.myformer.utils.ToastUtils;
@@ -43,7 +41,7 @@ public class DragViewActivity extends Activity implements AdapterView.OnItemClic
                 break;
             case "可拖拽排序GridView":
                 ToastUtils.showToast(this,"可拖拽排序GridView");
-                startActivity(new Intent(this, DragGridViewActivity.class));
+//                startActivity(new Intent(this, DragGridViewActivity.class)); //待开发
                 break;
             case "可拖拽GridView":
                 ToastUtils.showToast(this,"可拖拽排序GridView");
@@ -51,7 +49,7 @@ public class DragViewActivity extends Activity implements AdapterView.OnItemClic
                 break;
             case "可拖拽ItemTouchHelper":
                 ToastUtils.showToast(this,"可拖拽ItemTouchHelper");
-                startActivity(new Intent(this, ItemTouchHelperActivity.class));
+//                startActivity(new Intent(this, ItemTouchHelperActivity.class));
                 break;
         }
     }

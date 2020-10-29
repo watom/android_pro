@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.haitao.www.myformer.R;
-import com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.TitleBar;
+import com.haitao.www.myformer.ui.ui_common.component.composewidget.TitleBar;
 
 public class ZhenZhuMeiXueInput extends Activity implements View.OnClickListener {
     private Context context;

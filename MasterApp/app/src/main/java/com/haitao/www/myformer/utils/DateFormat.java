@@ -12,6 +12,22 @@ import java.util.Locale;
 public class DateFormat {
 
 	private static final SimpleDateFormat FMT_YMD = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+	/**
+	 * 获取现在时间戳
+	 */
+	public static String getDateByStamp(long timeStamp){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		return sdf.format(timeStamp);
+	}
+
+
+	/**
+	 * 获取现在时间戳
+	 */
+	public static String getTimeStamp(){
+		long milliseconds = System.currentTimeMillis();
+		return Long.toString(milliseconds);
+	}
 
 	/**
 	 * 获取现在时间：注意格式
@@ -33,7 +49,6 @@ public class DateFormat {
 		String day = dateString.substring(6,8);
 		String result = year+"-"+mouth+"-"+day+" "+ "23:59:59";
 		return result;
-
 	}
 
 	/**
@@ -75,7 +90,6 @@ public class DateFormat {
 		String day = dateString.substring(6,8);
 		String result = year+"-"+mouth+"-"+day+" "+ "00:00:00";
 		return result;
-
 	}
 	
 	/**
@@ -337,7 +351,6 @@ public class DateFormat {
 	 */
 	public static Date str2date(String dataStr){
 		Date result = null;
-
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault());
 		try {
 			result = sdf.parse(dataStr);
@@ -357,9 +370,7 @@ public class DateFormat {
 		Calendar calendar = Calendar.getInstance();
 		calendar.add(Calendar.MONTH, 2);
 		result = FMT_YMD.format(calendar.getTime());
-
 		return result;
-
 	}
 
 	/**
@@ -372,9 +383,7 @@ public class DateFormat {
 		Calendar calendar = Calendar.getInstance();
 		calendar.add(Calendar.MONTH, n);
 		result = FMT_YMD.format(calendar.getTime());
-
 		return result;
-
 	}
 
 	/**
@@ -556,6 +565,5 @@ public class DateFormat {
 		calendar.add(Calendar.DAY_OF_YEAR, i);
 		result = FMT_YMD.format(calendar.getTime());
 		return result;
-
 	}
 }

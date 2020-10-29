@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="TitleBar_View">
-        <attr name="titlebar_text" format="string" />
+        <attr name="titleBar_text" format="string" />
     </declare-styleable>
 
     <!--TabLayout属性详解-->

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <!--最基本的TabLayout-->
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.CustomDescribeTitle
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:describe_title="最基本的TabLayout" />
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.CustomDescribeTitle
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:describe_title="TabLayout与Viewpager联动" />

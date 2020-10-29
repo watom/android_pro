@@ -24,10 +24,7 @@ public class ToastUtils extends Toast {
      * @param content  字符串
      */
     public static void showToast(Context mContext, String content) {
-        toast = Toast.makeText(mContext, content, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.setText(content);
-        toast.show();
+        showMyToast(mContext,content);
         Log.i(mContext.toString(), content);
     }
 

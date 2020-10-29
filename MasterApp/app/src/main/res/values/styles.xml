@@ -7,10 +7,8 @@
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <!--自定义光标颜色-->
         <item name="colorAccent">@color/colorAccent</item>
-        <!--<item name="android:windowAnimationStyle">@style/Activity_Animation</item>-->
+        <item name="android:windowAnimationStyle">@style/Activity_Animation</item>
     </style>
-
-
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

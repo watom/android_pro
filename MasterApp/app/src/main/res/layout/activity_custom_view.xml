@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.CustomDescribeTitle
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:describe_title="你好"
         app:describe_title_color="@color/blueviolet" />
 
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomTitleBar
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.CustomTitleBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:right_button_drawable="@drawable/ic_delete"
@@ -19,7 +19,7 @@
         app:title_text="你好"
         app:title_text_color="@color/red" />
 
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.TitleBar
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

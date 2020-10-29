@@ -12,7 +12,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.haitao.www.myformer.R;
-import com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.TitleBar;
+import com.haitao.www.myformer.ui.ui_common.component.composewidget.TitleBar;
 import com.haitao.www.myformer.utils.SystemBarTintManager;
 
 public class ZhenZhuMeiXueLog extends Activity {

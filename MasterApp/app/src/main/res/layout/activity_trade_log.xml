@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context="projects.main.ZhenZhuMeiXueLog">
 
-    <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.TitleBar
+    <com.haitao.www.myformer.ui.ui_common.component.composewidget.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

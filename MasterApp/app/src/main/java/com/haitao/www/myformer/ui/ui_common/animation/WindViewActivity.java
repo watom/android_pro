@@ -1,11 +1,10 @@
 package com.haitao.www.myformer.ui.ui_common.animation;
 
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.github.ahmadnemati.wind.WindView;
-import com.github.ahmadnemati.wind.enums.TrendType;
 import com.haitao.www.myformer.R;
 
 /**
@@ -23,13 +22,13 @@ public class WindViewActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        WindView windView= (WindView) findViewById(R.id.windview);
-        windView.setPressure(30);
-        windView.setPressureUnit("in Hg");
-        windView.setWindSpeed(8);
-        windView.setWindSpeedUnit(" km/h");
-        windView.setTrendType(TrendType.UP);
-        windView.start();
-        //缺少设置风速和其他的设置界面，计划使用Bottomsheet实现
+//        WindView windView= (WindView) findViewById(R.id.windview);
+//        windView.setPressure(30);
+//        windView.setPressureUnit("in Hg");
+//        windView.setWindSpeed(8);
+//        windView.setWindSpeedUnit(" km/h");
+//        windView.setTrendType(TrendType.UP);
+//        windView.start();
+//        //缺少设置风速和其他的设置界面，计划使用Bottomsheet实现
     }
 }

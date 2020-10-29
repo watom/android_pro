@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.haitao.www.myformer.ui.ui_common.component.customassemblewidget.CustomDescribeTitle
+        <com.haitao.www.myformer.ui.ui_common.component.composewidget.CustomDescribeTitle
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:describe_title="先选择滑动方向" />

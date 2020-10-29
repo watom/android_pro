@@ -6,15 +6,13 @@
     <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 二维码需要的权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
-
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- OkHttp权限 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- SharedSDK添加必要的权限 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /><!-- 网络定位权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 写SD卡权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读SD卡权限 -->
@@ -145,6 +143,7 @@
                     android:scheme="http" />
             </intent-filter>
         </activity>
+
         <!-- 集成ShareSDK的activity 开始（中间是ShareSDK的内容） -->
         <activity
             android:name="com.mob.tools.MobUIShell"
@@ -200,7 +199,8 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- 集成ShareSDK的activity 结束 -->
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- 集成ShareSDK的activity 结束 -->
         <activity
             android:name=".logic.LogicTest.GsonApplyActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -252,10 +252,8 @@
         <activity android:name=".ui.ui_common.dialog.progressBar.PrimevalProgressActivity" />
         <activity android:name=".ui.ui_common.component.checkbox.CheckBoxActivity" />
         <activity android:name=".ui.ui_common.moduleTest.dragView.DragViewActivity" />
-        <activity android:name=".ui.ui_common.moduleTest.dragView.DragGridView.DragGridViewActivity" />
         <activity android:name=".ui.ui_common.moduleTest.dragView.DragRecyclerView.DragRecyclerViewActivity" />
         <activity android:name=".ui.ui_common.moduleTest.dragView.ReliableDragGridView.BaseDragGridViewActivity" />
-        <activity android:name=".ui.ui_common.moduleTest.dragView.DragItemTouchHelper.ItemTouchHelperActivity" />
         <activity android:name=".ui.ui_common.animation.BounceActivity" />
         <activity android:name="projects.main.pages.FriendLifeActivity" />
         <activity android:name=".sqLite.SQLiteActivity" />
@@ -266,6 +264,9 @@
         <activity android:name=".ui.ui_common.draw.DrawBaseActivity" />
         <activity android:name=".ui.ui_common.dialog.toast.ToastActivity" />
         <activity android:name=".logic.LogicTest.PhotoAlbumActivity" />
+        <activity android:name=".ui.ui_common.component.filepicker.PickerActivity" />
+        <activity android:name=".ui.ui_common.component.filepicker.FilePickerActivity" />
+        <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.MFilePickerActivity" />
+        <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.FileBrowserActivity" />
     </application>
-
 </manifest>

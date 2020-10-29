@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.haitao.www.myformer.R;
 import com.haitao.www.myformer.nettys.netty.base.BaseActivity;
 import com.haitao.www.myformer.utils.Log;
+import com.haitao.www.myformer.utils.ToastUtils;
 
 public class DesignPatternActivity extends BaseActivity {
     private ExpandableListView expandableListView;
@@ -36,6 +37,7 @@ public class DesignPatternActivity extends BaseActivity {
         AdapterDesignPattern adapter = new AdapterDesignPattern(this);
         expandableListView.setAdapter(adapter);
 
+
         //设置点击事件
         SpannableString 请点击文字 = new SpannableString(">>> 点击查看详情 <<<");
         请点击文字.setSpan(new ClickableSpan() {
@@ -53,7 +55,7 @@ public class DesignPatternActivity extends BaseActivity {
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Log.e("显示参数值", "groupPosition:" + groupPosition + "  childPosition:" + childPosition + "  id:" + id);
+                ToastUtils.showToast(DesignPatternActivity.this,"点击了第"+groupPosition+"个的第"+childPosition+"个");
                 return false;
             }
         });
