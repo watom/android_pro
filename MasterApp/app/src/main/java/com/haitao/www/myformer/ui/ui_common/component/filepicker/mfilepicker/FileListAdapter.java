@@ -19,6 +19,7 @@ import com.haitao.www.myformer.utils.DataUtil;
 import com.haitao.www.myformer.utils.DateFormat;
 
 import java.io.File;
+import java.util.List;
 
 public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
@@ -67,7 +68,7 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     private void initEvent(FileListHolder mHolder, int position, File file) {
-        mHolder.rlFileItem.setOnClickListener(new View.OnClickListener() {
+        mHolder.llFileTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClickListener.onItemClick(mHolder, position, file);
@@ -82,7 +83,7 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     class FileListHolder extends RecyclerView.ViewHolder {
         RelativeLayout rlFileItem;
-        LinearLayout llFileDesc;
+        LinearLayout llFileTitle, llFileDesc;
         SimpleDraweeView fileThumbnail;
         TextView tvFileName, tvFileInfo;
         ImageView ivOpen;
@@ -92,6 +93,7 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             super(itemView);
             rlFileItem = itemView.findViewById(R.id.rl_file_item);
             fileThumbnail = itemView.findViewById(R.id.file_thumbnail);
+            llFileTitle = itemView.findViewById(R.id.ll_file_title);
             llFileDesc = itemView.findViewById(R.id.ll_file_desc);
             tvFileName = itemView.findViewById(R.id.tv_file_name);
             tvFileInfo = itemView.findViewById(R.id.tv_file_info);

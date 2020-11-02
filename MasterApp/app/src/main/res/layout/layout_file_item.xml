@@ -37,7 +37,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/ll_file_info"
+            android:id="@+id/ll_file_title"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -74,16 +74,16 @@
 
             <ImageView
                 android:id="@+id/iv_open"
-                android:layout_width="16dp"
-                android:layout_height="20dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp"
                 android:src="@drawable/arrow_right" />
 
             <CheckBox
                 android:id="@+id/cb_choose"
                 style="@style/Widget.AppCompat.CompoundButton.RadioButton"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:clickable="true"
                 android:focusable="true"
                 android:focusableInTouchMode="false"

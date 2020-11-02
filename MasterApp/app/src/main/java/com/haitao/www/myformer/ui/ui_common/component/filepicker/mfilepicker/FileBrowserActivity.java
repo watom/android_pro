@@ -52,6 +52,8 @@ public class FileBrowserActivity extends AppCompatActivity {
     }
 
     private void initEvent() {
+        //刷新MediaStore数据库
+
     }
 
     private void initData() {
@@ -69,7 +71,16 @@ public class FileBrowserActivity extends AppCompatActivity {
         this.filePath = filePath;
         File file = new File(filePath);
         File[] fileList = file.listFiles();
+        if (fileList == null) {
+            ToastUtils.showToast(FileBrowserActivity.this, "暂无文件");
+            finish();
+        }else{
+            File[] fl = FilePickerUtil.sortFileListByName(fileList, "asc");
+            setFileListView(filePath, fl);
+        }
+    }
 
+    private void setFileListView(String filePath,  File[] fileList) {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         FileListAdapter adapter = new FileListAdapter(this, fileList);
         recyclerView.setLayoutManager(layoutManager);
@@ -81,8 +92,9 @@ public class FileBrowserActivity extends AppCompatActivity {
                     if (file.list().length > 0) {
                         getFileDir(file.getAbsolutePath());
                     }
-                }else{
-                    ToastUtils.showToast(FileBrowserActivity.this,"文件");
+                } else {
+                    //todo查看详情
+                    ToastUtils.showToast(FileBrowserActivity.this, "文件");
                 }
             }
         });
@@ -94,8 +106,12 @@ public class FileBrowserActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             File file = new File(filePath);
-            String parent = file.getParent();
-            getFileDir(parent);
+            String parentPath = file.getParent();
+            if ("/storage/emulated/0".equals(filePath)) {
+                finish();
+            } else {
+                getFileDir(parentPath);
+            }
         }
         return true;
     }

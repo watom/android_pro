@@ -6,10 +6,9 @@
     android:layout_marginEnd="10dp"
     android:orientation="vertical">
 
-    <com.haitao.www.myformer.ui.ui_common.component.composewidget.TitleBar
-        android:id="@+id/title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <include
+        android:id="@+id/view_search"
+        layout="@layout/search_bar" />
 
     <Button
         android:id="@+id/open_file_picker"
@@ -22,5 +21,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="文件信息:" />
+
+    <Button
+        android:id="@+id/open_nature_file_browser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="原生文件浏览器" />
+
+    <TextView
+        android:id="@+id/nature_file_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="文件信息:"/>
+
+    <Button
+        android:id="@+id/refresh_media_database"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="全盘刷新媒体数据库" />
+
+    <Button
+        android:id="@+id/refresh_media_scanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="刷新单个文件" />
 
 </LinearLayout>
