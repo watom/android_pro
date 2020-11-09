@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -11,12 +12,13 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,9 +26,9 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.haitao.www.myformer.R;
 import com.haitao.www.myformer.ui.ui_common.component.composewidget.TitleBar;
 import com.haitao.www.myformer.utils.DataUtil;
-import com.haitao.www.myformer.utils.ToastUtils;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,13 +38,16 @@ public class MFilePickerActivity extends AppCompatActivity {
     private static final String TAG = "文件管理器";
     public static final int RESULT_01 = 1;
     public static final int RESULT_02 = 2;
+    public static final int RESULT_03 = 3;
     public static final boolean isMultiple = true; //false:单选 true:多选
     private TitleBar titleBar;
-    private Button openNatureFileBrowser, openFilePicker, refreshMediaDatabase, refreshMediaScanner;
+    private Button openNatureFileBrowser, openFilePicker, refreshMediaDatabase, refreshMediaScanner, openSpecificPath, openSpecificPathHandle;
     private TextView natureFileInfo, fileInfo;
     private String storePath;
     private SearchView searchBar;
+    private View mSearchPlate;
     private RecyclerView searchResultList;
+    private EditText mSearchSrcTextView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,47 +59,33 @@ public class MFilePickerActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        searchBar = findViewById(R.id.search_bar);
-        searchResultList = findViewById(R.id.search_result_list);
+        searchBar = findViewById(R.id.view_search_bar);
         openNatureFileBrowser = findViewById(R.id.open_nature_file_browser);
         natureFileInfo = findViewById(R.id.nature_file_info);
         openFilePicker = findViewById(R.id.open_file_picker);
         fileInfo = findViewById(R.id.file_info);
         refreshMediaDatabase = findViewById(R.id.refresh_media_database);
         refreshMediaScanner = findViewById(R.id.refresh_media_scanner);
+        openSpecificPath = findViewById(R.id.open_specific_path);
+        openSpecificPathHandle = findViewById(R.id.open_specific_path_handle);
+
+        int mSearchSrcTextViewId = getResources().getIdentifier("android:id/search_src_text", null, null);
+        int mSearchPlateId = getResources().getIdentifier("android:id/search_plate", null, null);
+        mSearchSrcTextView = findViewById(mSearchSrcTextViewId);
+        mSearchPlate = findViewById(mSearchPlateId);
+        mSearchSrcTextView.setFocusable(false);
+        searchBar.setIconifiedByDefault(false);  //设置搜索图标是否在框内
+        mSearchPlate.setBackground(null);        //去掉搜索输入的背景线条
     }
 
     private void initEvent() {
-        searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        mSearchSrcTextView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                if (DataUtil.isEmpty(query)) {
-                    ToastUtils.showToast(MFilePickerActivity.this, "请输入查找内容！");
-                } else {
-                    findList.clear();
-                    for (int i = 0; i < list.size(); i++) {
-                        iconInformation information = list.get(i);
-                        if (information.getName().equals(query)) {
-                            findList.add(information);
-                            break;
-                        }
-                    }
-                    if (findList.size() == 0) {
-                        ToastUtils.showToast(MFilePickerActivity.this, "查找的商品不在列表中");
-                    } else {
-                        ToastUtils.showToast(MFilePickerActivity.this, "查找成功");
-                        findAdapter = new listViewAdapter(MFilePickerActivity.this, findList);
-                        searchResultList.setAdapter(findAdapter);
-                    }
-                }
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
+            public void onClick(View v) {
+                startActivity(new Intent(MFilePickerActivity.this, SearchActivity.class));
             }
         });
+
         //打开原生的文件选择器
         openNatureFileBrowser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,13 +147,36 @@ public class MFilePickerActivity extends AppCompatActivity {
                 }
             }
         });
-    }
 
-    private void setFileListView(String filePath,  File[] fileList) {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        FileListAdapter adapter = new FileListAdapter(this, fileList);
-        searchResultList.setLayoutManager(layoutManager);
-        searchResultList.setAdapter(adapter);
+        openSpecificPath.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("*/*");
+                startActivityForResult(intent, RESULT_03);
+            }
+        });
+
+        openSpecificPathHandle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse(Environment.getExternalStorageDirectory().getPath() + "/zhihu");
+                Log.i(TAG, "onClick: " + uri.toString());
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_DEFAULT);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setDataAndType(Uri.parse(Environment.getExternalStorageDirectory().getPath() + "/zhihu"), "*/*");
+                startActivity(intent);
+
+//                Uri uri = Uri.parse("content://com.android.externalstorage.documents/document/primary:zhihu");
+//                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+//                intent.addCategory(Intent.CATEGORY_OPENABLE);
+//                intent.setType("*/*");
+//                intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, uri);
+//                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -202,7 +216,29 @@ public class MFilePickerActivity extends AppCompatActivity {
                     natureFileInfo.setText(pathList.toString());
                 }
             }
+        } else if (requestCode == RESULT_03) {
+            if (data != null) {
+                Uri uri = data.getData();
+                Log.i(TAG, "Uri: " + uri.toString() + "\nPath: ");
+            }
+        }
+    }
 
+    /**
+     * 设置SearchView下划线透明
+     **/
+    private void setUnderLineTransparent(SearchView searchView) {
+        try {
+            Class<?> argClass = searchView.getClass();
+            // mSearchPlate是SearchView父布局的名字
+            Field ownField = argClass.getDeclaredField("mSearchPlate");
+            ownField.setAccessible(true);
+            View mView = (View) ownField.get(searchView);
+            mView.setBackgroundColor(Color.TRANSPARENT);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
     }
 }

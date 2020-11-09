@@ -268,5 +268,6 @@
         <activity android:name=".ui.ui_common.component.filepicker.FilePickerActivity" />
         <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.MFilePickerActivity" />
         <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.FileBrowserActivity" />
+        <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.SearchActivity" />
     </application>
 </manifest>

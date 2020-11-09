@@ -6,9 +6,14 @@
     android:layout_marginEnd="10dp"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/view_search"
-        layout="@layout/search_bar" />
+    <SearchView
+        android:id="@+id/view_search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:queryHint="搜索文件"
+        android:imeOptions="actionSearch"
+        android:background="@drawable/shape_round_corner01"/>
 
     <Button
         android:id="@+id/open_file_picker"
@@ -46,4 +51,15 @@
         android:layout_height="wrap_content"
         android:text="刷新单个文件" />
 
+    <Button
+        android:id="@+id/open_specific_path"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开指定目录(不能操作)" />
+
+    <Button
+        android:id="@+id/open_specific_path_handle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开指定目录(能操作)" />
 </LinearLayout>

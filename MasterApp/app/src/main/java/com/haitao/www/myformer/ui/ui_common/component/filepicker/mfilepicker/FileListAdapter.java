@@ -23,10 +23,10 @@ import java.util.List;
 
 public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
-    private File[] fileList;
+    private List<File> fileList;
     private OnItemClickListener onItemClickListener;
 
-    public FileListAdapter(Context context, File[] fileList) {
+    public FileListAdapter(Context context, List<File> fileList) {
         this.context = context;
         this.fileList = fileList;
     }
@@ -45,7 +45,7 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         FileListHolder mHolder = (FileListHolder) holder;
-        File file = fileList[position];
+        File file = fileList.get(position);
         if (file.isDirectory()) {
             int length = file.list().length;
             if (length < 1) {
@@ -76,9 +76,18 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         });
     }
 
+    public void updateData(List<File> fileList) {
+        if(DataUtil.isEmpty(fileList)){
+            this.fileList.clear();
+        }else{
+            this.fileList = fileList;
+        }
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
-        return fileList.length;
+        return fileList.size();
     }
 
     class FileListHolder extends RecyclerView.ViewHolder {

@@ -178,4 +178,15 @@
     <color name="black">#000000</color><!--黑色 -->
     <color name="common_bg">#EBEBEB</color><!--普通背景色 -->
 
+    <!--护眼色-->
+    <color name="beangreen1">#C7EDCC</color><!--绿豆沙色1 -->
+    <color name="beangreen2">#CCE8CF</color><!--绿豆沙色2 -->
+    <color name="almondyellow">#FAF9DE </color><!--杏仁黄 -->
+    <color name="autumnbrown">#FFF2E2   </color><!--秋叶褐 -->
+    <color name="grassgreen">#E3EDCD </color><!--青草绿 -->
+    <color name="seaskyblue">#DCE2F1 </color><!--海天蓝 -->
+    <color name="auroralash">#EAEAEF  </color><!--极光灰  -->
+
+
+
 </resources>
