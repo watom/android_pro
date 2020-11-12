@@ -32,7 +32,6 @@ import java.util.ArrayList;
 /**
  * Created by Administrator on 2018/1/5 0005.
  */
-
 public class AlertDialogDemo extends AppCompatActivity implements View.OnClickListener {
     private Button dialog1;
     private Button dialog2;

@@ -2,69 +2,83 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
     android:orientation="vertical">
 
     <SearchView
         android:id="@+id/view_search_bar"
         android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:queryHint="搜索文件"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/shape_round_corner01"
         android:imeOptions="actionSearch"
-        android:background="@drawable/shape_round_corner01"/>
+        android:queryHint="搜索文件" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_type"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/open_file_picker"
+        android:id="@+id/file_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="内部存储" />
+        android:layout_margin="10dp" />
 
-    <TextView
-        android:id="@+id/file_info"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="文件信息:" />
+        android:layout_height="10dp"
+        android:background="#DBDBDB" />
 
-    <Button
-        android:id="@+id/open_nature_file_browser"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="原生文件浏览器" />
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/nature_file_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="文件信息:"/>
+        <Button
+            android:id="@+id/open_file_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="内部存储" />
 
-    <Button
-        android:id="@+id/refresh_media_database"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="全盘刷新媒体数据库" />
+        <TextView
+            android:id="@+id/file_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="文件信息:" />
 
-    <Button
-        android:id="@+id/refresh_media_scanner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="刷新单个文件" />
+        <Button
+            android:id="@+id/open_nature_file_browser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="原生文件浏览器" />
 
-    <Button
-        android:id="@+id/open_specific_path"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="打开指定目录(不能操作)" />
+        <TextView
+            android:id="@+id/nature_file_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="文件信息:" />
 
-    <Button
-        android:id="@+id/open_specific_path_handle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="打开指定目录(能操作)" />
+        <Button
+            android:id="@+id/refresh_media_database"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="全盘刷新媒体数据库" />
+
+        <Button
+            android:id="@+id/refresh_media_scanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="刷新单个文件" />
+
+        <Button
+            android:id="@+id/open_specific_path"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="打开指定目录(不能操作)" />
+
+        <Button
+            android:id="@+id/open_specific_path_handle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="打开指定目录(能操作)" />
+    </LinearLayout>
 </LinearLayout>

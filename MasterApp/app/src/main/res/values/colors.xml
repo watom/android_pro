@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--主题色-->
     <color name="colorPrimary">#3F51B5</color>
     <!--<color name="colorPrimaryDark">#303F9F</color>-->
     <!--<color name="colorPrimary">#00000000</color>-->
     <color name="colorPrimaryDark">#00000000</color>
     <color name="colorAccent">#FF4081</color>
-
+    <!--透明色-->
     <color name="transparent">#00000000</color>
     <color name="translucent">#26ffffff</color>
     <color name="toast_color">#CC318DFB</color>
-
+    <!--常用色-->
     <color name="common_content_bg_white">#ffffff</color>
     <color name="background">#F7F4F0</color>
     <color name="title_color">#333333</color>
@@ -17,18 +18,19 @@
     <color name="excel_backgroud">#EE5859</color>
     <color name="excel_white">#FFFFFF</color>
 
+    <!--一般色系-->
     <drawable name="btn_focused">#cecece</drawable>
     <drawable name="btn_normal">#909090</drawable>
-    <color name="baise_white">#FFFFFF</color> <!-- 白 -->
+    <color name="baise">#FFFFFF</color> <!-- 白 -->
     <color name="xiangyabai_white">#FFFFF0</color> <!-- 象牙白 -->
     <color name="shenlvse">#4d9888</color> <!-- 深绿色 -->
     <color name="lvse_green">#1bbc9b</color> <!-- 通绿用 -->
     <color name="huangse_yellow">#f5a623</color><!-- 黄色 -->
     <color name="shenhuise">#787878</color><!-- 深灰 -->
     <color name="huise">#A8A8A8</color> <!-- 灰 -->
-    <color name="qianhui">#a6a6a6</color> <!-- 浅灰 -->
-    <color name="fanqiehong_red">#FF6347</color> <!-- 番茄红 -->
-    <color name="juhongse">#fe6c36</color> <!-- 橘红色 -->
+    <color name="qianhui">#A6A6A6</color> <!-- 浅灰 -->
+    <color name="tomato_red">#FF6347</color> <!-- 番茄红 -->
+    <color name="orange_red">#fe6c36</color> <!-- 橘红色 -->
     <color name="lanse_blue">#0000ff</color> <!-- 通蓝色 -->
     <color name="bg_0">#3c3f41</color> <!--  -->
     <color name="bg_1">#313335</color> <!--  -->

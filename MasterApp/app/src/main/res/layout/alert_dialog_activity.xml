@@ -19,7 +19,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="通用Dialog"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
 
         <TextView
             android:layout_width="3dp"
@@ -34,7 +34,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="多选择Dialog"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
     </LinearLayout>
 
     <LinearLayout
@@ -51,7 +51,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="列表Dialog"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
 
         <TextView
             android:layout_width="3dp"
@@ -66,7 +66,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="单选Dialog"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
     </LinearLayout>
 
     <LinearLayout
@@ -83,7 +83,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="多选Dialog"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
 
         <TextView
             android:layout_width="3dp"
@@ -98,7 +98,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="等待Dialog(已过时)"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
     </LinearLayout>
 
     <LinearLayout
@@ -115,7 +115,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="进度Dialog"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
 
         <TextView
             android:layout_width="3dp"
@@ -130,7 +130,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="输入Dialog"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
     </LinearLayout>
 
     <LinearLayout
@@ -147,7 +147,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="自定义内容布局"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
 
         <TextView
             android:layout_width="3dp"
@@ -162,7 +162,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="自定义标题布局"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
     </LinearLayout>
 
     <LinearLayout
@@ -179,7 +179,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="初始化时修改内容"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
 
         <TextView
             android:layout_width="3dp"
@@ -194,7 +194,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="完全自定义Dialog"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
     </LinearLayout>
 
     <LinearLayout
@@ -211,7 +211,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="CALL自定义Dialog"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
 
         <TextView
             android:layout_width="3dp"
@@ -226,7 +226,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="说明"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
     </LinearLayout>
 
     <LinearLayout
@@ -243,7 +243,7 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="封装的Dialog工具"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
 
         <TextView
             android:layout_width="3dp"
@@ -258,6 +258,6 @@
             android:background="@drawable/selector_ispress_common"
             android:onClick="onClick"
             android:text="等待Dailog(最新)"
-            android:textColor="@color/baise_white" />
+            android:textColor="@color/baise" />
     </LinearLayout>
 </LinearLayout>

@@ -19,18 +19,21 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.haitao.www.myformer.R;
+import com.haitao.www.myformer.model.global.SimpleBean;
 import com.haitao.www.myformer.ui.ui_common.component.composewidget.TitleBar;
 import com.haitao.www.myformer.utils.DataUtil;
 
-import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.sharesdk.system.text.ShortMessage;
+import cn.sharesdk.wechat.friends.Wechat;
 
 import static com.haitao.www.myformer.utils.Util.getPath;
 
@@ -45,7 +48,9 @@ public class MFilePickerActivity extends AppCompatActivity {
     private TextView natureFileInfo, fileInfo;
     private String storePath;
     private SearchView searchBar;
+    private RecyclerView fileMenu;
     private View mSearchPlate;
+    private FileMenuAdapter fileMenuAdapter;
     private RecyclerView searchResultList;
     private EditText mSearchSrcTextView;
 
@@ -60,6 +65,7 @@ public class MFilePickerActivity extends AppCompatActivity {
 
     private void initView() {
         searchBar = findViewById(R.id.view_search_bar);
+        fileMenu = findViewById(R.id.file_menu);
         openNatureFileBrowser = findViewById(R.id.open_nature_file_browser);
         natureFileInfo = findViewById(R.id.nature_file_info);
         openFilePicker = findViewById(R.id.open_file_picker);
@@ -76,6 +82,28 @@ public class MFilePickerActivity extends AppCompatActivity {
         mSearchSrcTextView.setFocusable(false);
         searchBar.setIconifiedByDefault(false);  //设置搜索图标是否在框内
         mSearchPlate.setBackground(null);        //去掉搜索输入的背景线条
+        initType(fileMenu);
+    }
+
+    private void initType(RecyclerView fileMenu) {
+        List<SimpleBean> menuList = new ArrayList<>();
+        SimpleBean simpleBean0 = new SimpleBean(R.drawable.icon_menu_image, "图片", 0);
+        SimpleBean simpleBean1 = new SimpleBean(R.drawable.icon_menu_video, "视频", 1);
+        SimpleBean simpleBean2 = new SimpleBean(R.drawable.icon_menu_audio, "音频", 2);
+        SimpleBean simpleBean3 = new SimpleBean(R.drawable.icon_menu_doc, "文档", 3);
+        SimpleBean simpleBean4 = new SimpleBean(R.drawable.icon_menu_zip, "压缩包", 4);
+        SimpleBean simpleBean5 = new SimpleBean(R.drawable.icon_menu_app, "应用", 5);
+        menuList.add(simpleBean0);
+        menuList.add(simpleBean1);
+        menuList.add(simpleBean2);
+        menuList.add(simpleBean3);
+        menuList.add(simpleBean4);
+        menuList.add(simpleBean5);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
+        fileMenu.setLayoutManager(gridLayoutManager);
+        fileMenuAdapter = new FileMenuAdapter(this, menuList);
+        fileMenu.setAdapter(fileMenuAdapter);
     }
 
     private void initEvent() {
@@ -177,6 +205,32 @@ public class MFilePickerActivity extends AppCompatActivity {
 //                startActivity(intent);
             }
         });
+
+        fileMenuAdapter.setOnClickItemListener(new FileMenuAdapter.OnClickItemListener() {
+            @Override
+            public void onClick(SimpleBean bean) {
+                switch (bean.getTag()){
+                    case 0:
+
+                        break;
+                    case 1:
+
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+
+                        break;
+                    case 4:
+
+                        break;
+                    case 5:
+
+                        break;
+                }
+            }
+        });
     }
 
     @Override
@@ -221,24 +275,6 @@ public class MFilePickerActivity extends AppCompatActivity {
                 Uri uri = data.getData();
                 Log.i(TAG, "Uri: " + uri.toString() + "\nPath: ");
             }
-        }
-    }
-
-    /**
-     * 设置SearchView下划线透明
-     **/
-    private void setUnderLineTransparent(SearchView searchView) {
-        try {
-            Class<?> argClass = searchView.getClass();
-            // mSearchPlate是SearchView父布局的名字
-            Field ownField = argClass.getDeclaredField("mSearchPlate");
-            ownField.setAccessible(true);
-            View mView = (View) ownField.get(searchView);
-            mView.setBackgroundColor(Color.TRANSPARENT);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
         }
     }
 }
