@@ -4,7 +4,6 @@ import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -28,14 +27,10 @@ import com.haitao.www.myformer.model.global.SimpleBean;
 import com.haitao.www.myformer.ui.ui_common.component.composewidget.TitleBar;
 import com.haitao.www.myformer.utils.DataUtil;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.sharesdk.system.text.ShortMessage;
-import cn.sharesdk.wechat.friends.Wechat;
-
-import static com.haitao.www.myformer.utils.Util.getPath;
+import static com.haitao.www.myformer.ui.ui_common.component.filepicker.mfilepicker.FetchFileData.getPath;
 
 public class MFilePickerActivity extends AppCompatActivity {
     private static final String TAG = "文件管理器";
