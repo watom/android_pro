@@ -79,7 +79,7 @@ dependencies {
 //    implementation project(":draggridviewlib")
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.squareup.okhttp3:okhttp:4.8.1'
     implementation 'com.squareup.okio:okio:2.7.0'
     implementation 'cn.yipianfengye.android:zxing-library:2.1'
@@ -93,8 +93,8 @@ dependencies {
 
 
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.8'
-    implementation 'com.github.huburt-Hu:NewbieGuide:v2.4.0'
+//    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.8'
+//    implementation 'com.github.huburt-Hu:NewbieGuide:v2.4.0'
 //    implementation 'com.github.lovetuzitong:MultiImageSelector:1.2'
     implementation 'com.leon:lfilepickerlibrary:1.8.0'
     implementation 'com.droidninja:filepicker:2.2.4'

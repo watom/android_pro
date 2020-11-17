@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -27,6 +28,7 @@ import com.haitao.www.myformer.model.global.SimpleBean;
 import com.haitao.www.myformer.ui.ui_common.component.composewidget.TitleBar;
 import com.haitao.www.myformer.utils.DataUtil;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,13 +49,14 @@ public class MFilePickerActivity extends AppCompatActivity {
     private View mSearchPlate;
     private FileMenuAdapter fileMenuAdapter;
     private RecyclerView searchResultList;
+    private FileListAdapter fileListAdapter;
     private EditText mSearchSrcTextView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this); //在setContentView之前初始化Fresco
-        setContentView(R.layout.activity_filepicker);
+        setContentView(R.layout.activity_file_picker);
         initView();
         initEvent();
     }
@@ -128,8 +131,7 @@ public class MFilePickerActivity extends AppCompatActivity {
                 new AlertDialog.Builder(MFilePickerActivity.this)
                         .setTitle("选择存储区域")
                         .setIcon(R.drawable.ic_open_file)
-                        .setSingleChoiceItems(
-                                new String[]{"内置sd卡", "外部sd卡"}, 0,
+                        .setSingleChoiceItems(new String[]{"内置sd卡", "外部sd卡"}, 0,
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         Intent intent = new Intent(MFilePickerActivity.this, FileBrowserActivity.class);
@@ -144,8 +146,7 @@ public class MFilePickerActivity extends AppCompatActivity {
         refreshMediaDatabase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED,
-//                        Uri.parse("file://" + Environment.getExternalStorageDirectory())));
+//                sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory())));
                 Uri mUri = Uri.parse("content://media/external/images/media");
                 Uri mImageUri = null;
                 Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, null,
@@ -204,9 +205,9 @@ public class MFilePickerActivity extends AppCompatActivity {
         fileMenuAdapter.setOnClickItemListener(new FileMenuAdapter.OnClickItemListener() {
             @Override
             public void onClick(SimpleBean bean) {
-                switch (bean.getTag()){
+                switch (bean.getTag()) {
                     case 0:
-
+                        startActivity(new Intent(MFilePickerActivity.this, SpreadActivity.class));
                         break;
                     case 1:
 

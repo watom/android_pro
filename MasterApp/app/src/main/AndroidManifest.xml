@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 写SD卡权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读SD卡权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> <!-- 读SD卡权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 短信验证登陆功能需要添加次权限来自动填充验证码，用不到可以去掉 -->
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -260,7 +260,6 @@
         <activity android:name=".ui.ui_common.component.notification.NotificationActivity" />
         <activity android:name=".ui.ui_common.component.keyboard.KeyBoardActivity" />
         <activity android:name=".ui.ui_common.draw.DrawActivity" />
-        <activity android:name=".ui.ui_common.draw.HollowSimplyActivity" />
         <activity android:name=".ui.ui_common.draw.DrawBaseActivity" />
         <activity android:name=".ui.ui_common.dialog.toast.ToastActivity" />
         <activity android:name=".logic.LogicTest.PhotoAlbumActivity" />
@@ -269,5 +268,6 @@
         <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.MFilePickerActivity" />
         <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.FileBrowserActivity" />
         <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.SearchActivity" />
+        <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.SpreadActivity" />
     </application>
 </manifest>

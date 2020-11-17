@@ -38,7 +38,6 @@ public class DrawActivity extends Activity implements AdapterView.OnItemClickLis
                 startActivity(new Intent(this, DrawBaseActivity.class));
                 break;
             case "挖空":
-                startActivity(new Intent(this, HollowSimplyActivity.class));
                 break;
         }
     }

@@ -47,7 +47,6 @@ public class BarCodeMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getCameraPermission();
-
             }
         });
 

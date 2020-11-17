@@ -11,10 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.haitao.www.myformer.R;
-import com.haitao.www.myformer.utils.GlideEngine;
-import com.luck.picture.lib.PictureSelector;
-import com.luck.picture.lib.config.PictureConfig;
-import com.luck.picture.lib.config.PictureMimeType;
 
 /**
  * Created by watom_Thinkpad on 2018/9/1.
@@ -40,14 +36,5 @@ public class WodeFragment extends Fragment {
     }
 
     private void initEvent() {
-        llTitleMe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PictureSelector.create(getActivity())
-                        .openGallery(PictureMimeType.ofImage())
-                        .imageEngine(GlideEngine.createGlideEngine()) // 请参考Demo GlideEngine.java
-                        .forResult(PictureConfig.CHOOSE_REQUEST);
-            }
-        });
     }
 }
