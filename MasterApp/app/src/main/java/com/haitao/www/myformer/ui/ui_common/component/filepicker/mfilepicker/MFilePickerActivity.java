@@ -19,7 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -28,7 +27,6 @@ import com.haitao.www.myformer.model.global.SimpleBean;
 import com.haitao.www.myformer.ui.ui_common.component.composewidget.TitleBar;
 import com.haitao.www.myformer.utils.DataUtil;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +45,7 @@ public class MFilePickerActivity extends AppCompatActivity {
     private SearchView searchBar;
     private RecyclerView fileMenu;
     private View mSearchPlate;
+    private Bundle bundle;
     private FileMenuAdapter fileMenuAdapter;
     private RecyclerView searchResultList;
     private FileListAdapter fileListAdapter;
@@ -91,12 +90,16 @@ public class MFilePickerActivity extends AppCompatActivity {
         SimpleBean simpleBean3 = new SimpleBean(R.drawable.icon_menu_doc, "文档", 3);
         SimpleBean simpleBean4 = new SimpleBean(R.drawable.icon_menu_zip, "压缩包", 4);
         SimpleBean simpleBean5 = new SimpleBean(R.drawable.icon_menu_app, "应用", 5);
+        SimpleBean simpleBean6 = new SimpleBean(R.drawable.icon_menu_common, "常用", 6);
+        SimpleBean simpleBean7 = new SimpleBean(R.drawable.icon_menu_other, "其他", 7);
         menuList.add(simpleBean0);
         menuList.add(simpleBean1);
         menuList.add(simpleBean2);
         menuList.add(simpleBean3);
         menuList.add(simpleBean4);
         menuList.add(simpleBean5);
+        menuList.add(simpleBean6);
+        menuList.add(simpleBean7);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
         fileMenu.setLayoutManager(gridLayoutManager);
@@ -205,26 +208,11 @@ public class MFilePickerActivity extends AppCompatActivity {
         fileMenuAdapter.setOnClickItemListener(new FileMenuAdapter.OnClickItemListener() {
             @Override
             public void onClick(SimpleBean bean) {
-                switch (bean.getTag()) {
-                    case 0:
-                        startActivity(new Intent(MFilePickerActivity.this, SpreadActivity.class));
-                        break;
-                    case 1:
-
-                        break;
-                    case 2:
-
-                        break;
-                    case 3:
-
-                        break;
-                    case 4:
-
-                        break;
-                    case 5:
-
-                        break;
-                }
+                Intent intent = new Intent(MFilePickerActivity.this, SpreadActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("SpreadList", bean);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }

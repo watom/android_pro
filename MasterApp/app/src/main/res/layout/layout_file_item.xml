@@ -23,7 +23,7 @@
         app:progressBarImage="@drawable/ic_loading"
         app:progressBarImageScaleType="centerInside"
         app:retryImage="@drawable/ic_retry"
-        app:retryImageScaleType="centerInside" />
+        app:retryImageScaleType="centerInside"/>
 
     <LinearLayout
         android:id="@+id/ll_file_desc"

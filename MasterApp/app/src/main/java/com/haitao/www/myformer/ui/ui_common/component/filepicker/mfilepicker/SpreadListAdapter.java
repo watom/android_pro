@@ -1,6 +1,13 @@
 package com.haitao.www.myformer.ui.ui_common.component.filepicker.mfilepicker;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.ThumbnailUtils;
+import android.net.Uri;
+import android.os.Build;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,8 +53,7 @@ public class SpreadListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         SpreadListHolder mHolder = (SpreadListHolder) holder;
         File file = fileList.get(position);
-//        mHolder.fileThumbnail.setImageResource(FilePickerUtil.getResIdByName(file.getName()));
-        mHolder.fileThumbnail.setImageURI(file.getAbsolutePath());
+        mHolder.fileThumbnail.setImageURI(FetchFileData.getImageContentUri(context,file));
         mHolder.tvFileInfo.setText(DateFormat.getDateByStamp(file.lastModified()) + " - " + DataUtil.getFileSize(file.length()));
         mHolder.cbChoose.setVisibility(View.VISIBLE);
         mHolder.ivOpen.setVisibility(View.GONE);

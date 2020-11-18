@@ -1,7 +1,6 @@
 package com.haitao.www.myformer.ui.ui_common.component.filepicker.mfilepicker;
 
-import android.annotation.SuppressLint;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.haitao.www.myformer.R;
+import com.haitao.www.myformer.model.global.SimpleBean;
 import com.haitao.www.myformer.ui.ui_common.component.composewidget.TitleBar;
 
 import java.io.File;
@@ -45,8 +45,11 @@ public class SpreadActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        Intent intent = getIntent();
+        SimpleBean bean = (SimpleBean)intent.getSerializableExtra("SpreadList");
         titleBar = findViewById(R.id.title_bar);
         recyclerView = findViewById(R.id.recycler_spread_list);
+        titleBar.setTitle(bean.getImageText());
     }
 
     private void initData() {

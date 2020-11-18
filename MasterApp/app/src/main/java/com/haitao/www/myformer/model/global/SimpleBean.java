@@ -1,6 +1,8 @@
 package com.haitao.www.myformer.model.global;
 
-public class SimpleBean {
+import java.io.Serializable;
+
+public class SimpleBean implements Serializable {
     private int imageResId;
     private String imageText;
     private int tag;
@@ -43,4 +45,5 @@ public class SimpleBean {
                 ", tag=" + tag +
                 '}';
     }
+
 }

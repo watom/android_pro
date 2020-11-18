@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -433,4 +434,47 @@ public class FetchFileData {
         return new StringBuffer().append(temp).append("_").append(getCreateFileName()).append(suffix).toString();
     }
 
+    /**
+     * 图片类文件
+     * 绝对路径转Uri
+     * @param context this
+     * @param imageFile file:///storage/emulated/0/Android/data/com.zn_android.zn/cache/PostPicture/20170905193015.jpg
+     */
+    public static Uri getImageContentUri(Context context, File imageFile) {
+        String filePath = imageFile.getAbsolutePath();
+        Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                new String[]{MediaStore.Images.Media._ID}, MediaStore.Images.Media.DATA + "=? ",
+                new String[]{filePath}, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            int id = cursor.getInt(cursor.getColumnIndex(MediaStore.MediaColumns._ID));
+            Uri baseUri = Uri.parse("content://media/external/images/media");
+            return Uri.withAppendedPath(baseUri, "" + id);
+        } else {
+            if (imageFile.exists()) {
+                ContentValues values = new ContentValues();
+                values.put(MediaStore.Images.Media.DATA, filePath);
+                return context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+            } else {
+                return null;
+            }
+        }
+    }
+
+    /**
+     * 图片类文件
+     * Uri转绝对路径
+     * @param context this
+     * @param selectedVideoUri content://media/external/images/media/212304
+     */
+    public static String getFilePathFromContentUri(Context context,Uri selectedVideoUri) {
+        String filePath;
+        String[] filePathColumn = {MediaStore.MediaColumns.DATA};
+        ContentResolver contentResolver = context.getContentResolver();
+        Cursor cursor = contentResolver.query(selectedVideoUri, filePathColumn, null, null, null);
+        cursor.moveToFirst();
+        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+        filePath = cursor.getString(columnIndex);
+        cursor.close();
+        return filePath;
+    }
 }
