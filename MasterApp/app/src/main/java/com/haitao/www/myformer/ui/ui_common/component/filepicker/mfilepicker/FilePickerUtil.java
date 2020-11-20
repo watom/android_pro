@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 
+import com.haitao.www.myformer.BuildConfig;
 import com.haitao.www.myformer.R;
 
 import java.io.File;
@@ -374,7 +375,7 @@ public class FilePickerUtil {
         }
         try {
             //解决7.0以上的兼容性问题
-            Uri uri = FileProvider.getUriForFile(context, "com.haitao.www.myformer.fileprovider", file);
+            Uri uri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", file);
             Log.i(TAG, "openFile: " + uri.toString());
             //获取文件file的MIME类型
             String fileType = getMIMEType(file);
@@ -396,7 +397,7 @@ public class FilePickerUtil {
         }
         try {
             //解决7.0以上的兼容性问题
-            Uri uri = FileProvider.getUriForFile(context, "com.haitao.www.myformer.fileprovider", file);
+            Uri uri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", file);
             Log.i(TAG, "openFile: " + uri.toString());
             //获取文件file的MIME类型
             String type = getMIMEType(file);
