@@ -35,7 +35,7 @@ import java.util.List;
  */
 
 public class FileUtil {
-    static final String FILES_PATH = "CompressHelper";
+    public static final String TAG = "FileUtil";
     private static final int EOF = -1;
     private static final int DEFAULT_BUFFER_SIZE = 1024 * 4;
 
@@ -106,9 +106,11 @@ public class FileUtil {
         return !newFile.exists()
                 && file.renameTo(newFile);
     }
+
     public static boolean isSpace(String s) {
         return (s == null || s.trim().length() == 0);
     }
+
     /**
      * 判断是否是目录
      *
@@ -152,9 +154,10 @@ public class FileUtil {
 
     /**
      * 重命名文件
-     * @param file      文件
-     * @param newName   新名字
-     * @return          新文件
+     *
+     * @param file    文件
+     * @param newName 新名字
+     * @return 新文件
      */
     public static File renameFile(File file, String newName) {
         File newFile = new File(file.getParent(), newName);
@@ -174,9 +177,10 @@ public class FileUtil {
 
     /**
      * 获取临时文件
-     * @param context   上下文
-     * @param uri       url
-     * @return          临时文件
+     *
+     * @param context 上下文
+     * @param uri     url
+     * @return 临时文件
      * @throws IOException
      */
     public static File getTempFile(Context context, Uri uri) throws IOException {
@@ -202,10 +206,12 @@ public class FileUtil {
         }
         return tempFile;
     }
+
     /**
      * 获取临时文件
-     * @param context   上下文
-     * @return          临时文件
+     *
+     * @param context 上下文
+     * @return 临时文件
      * @throws IOException
      */
     public static File getTempFile2(Context context, String file) throws IOException {
@@ -235,6 +241,7 @@ public class FileUtil {
 
     /**
      * 截取文件名称
+     *
      * @param fileName 文件名称
      * @return 数组[0]:文件名称  数组[1]:后缀名
      */
@@ -246,15 +253,15 @@ public class FileUtil {
             name = fileName.substring(0, i);
             extension = fileName.substring(i);
         }
-
         return new String[]{name, extension};
     }
 
     /**
      * 获取文件名称
-     * @param context   上下文
-     * @param uri       uri
-     * @return          文件名称
+     *
+     * @param context 上下文
+     * @param uri     uri
+     * @return 文件名称
      */
     static String getFileName(Context context, Uri uri) {
         String result = null;
@@ -284,9 +291,10 @@ public class FileUtil {
 
     /**
      * 获取真实的路径
-     * @param context   上下文
-     * @param uri       uri
-     * @return          文件路径
+     *
+     * @param context 上下文
+     * @param uri     uri
+     * @return 文件路径
      */
     static String getRealPathFromURI(Context context, Uri uri) {
         Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
@@ -300,7 +308,6 @@ public class FileUtil {
             return realPath;
         }
     }
-
 
 
     static int copy(InputStream input, OutputStream output) throws IOException {
@@ -349,13 +356,13 @@ public class FileUtil {
         }
         // 遍历要复制该目录下的全部文件
         for (int i = 0; i < currentFiles.length; i++) {
-            if (currentFiles[i].isDirectory())// 如果当前项为子目录 进行递归
-            {
+            if (currentFiles[i].isDirectory()) {
+                // 如果当前项为子目录 进行递归
                 copyFolder(currentFiles[i].getPath() + "/",
                         toFile + currentFiles[i].getName() + "/");
 
-            } else// 如果当前项为文件则进行文件拷贝
-            {
+            } else {
+                // 如果当前项为文件则进行文件拷贝
                 CopySdcardFile(currentFiles[i].getPath(), toFile
                         + currentFiles[i].getName());
             }
@@ -571,10 +578,7 @@ public class FileUtil {
             }
         }
         return b;
-
     }
-
-    ;
 
     public String readFileFromApp(Context context, String fileName) {
         String result = null;
@@ -634,7 +638,7 @@ public class FileUtil {
                 }
             }
         } else {
-            Toast.makeText(context, "不能识别SD卡",Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "不能识别SD卡", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -667,7 +671,7 @@ public class FileUtil {
             }
 
         } else {
-            Toast.makeText(context, "不能识别SD卡",Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "不能识别SD卡", Toast.LENGTH_LONG).show();
         }
         return str.toString();
     }
@@ -784,5 +788,83 @@ public class FileUtil {
         }
         return true;
     }
+
+
+    public static File createOrRenameFile(File from, String toPrefix, String toSuffix) {
+        File directory = from.getParentFile();
+        if (!directory.exists()) {
+            if (directory.mkdir()) {
+                Log.v(TAG, "目录不存在，创建完成： " + directory.getAbsolutePath());
+            }
+        }
+        File newFile = new File(directory, toPrefix + toSuffix);
+        for (int i = 1; newFile.exists() && i < Integer.MAX_VALUE; i++) {
+            newFile = new File(directory, toPrefix + '(' + i + ')' + toSuffix);
+        }
+        if (!from.renameTo(newFile)) {
+            Log.w(TAG, "不能重命名： " + newFile.getAbsolutePath());
+            return from;
+        }
+        return newFile;
+    }
+
+
+    /**
+     * 文件下载后重命名
+     * @param from
+     * @return
+     */
+    public static File createOrRename(File from) {
+        int count = 0;
+        File newFile = null;
+        File directory = from.getParentFile();
+        if (!directory.exists()) {
+            if (directory.mkdir()) {
+                Log.v(TAG, "目录不存在，创建完成： " + directory.getAbsolutePath());
+            }
+        }
+        File[] files = directory.listFiles();
+        for (File childFile : files) {
+            if (isSameFile(from, childFile)) {
+                count += 1;
+            }
+        }
+        if (count > 0) {
+            String[] preSuf = getPreSuf(from);
+            newFile = new File(directory, preSuf[0] + "(" + (count + 1) + ")" + preSuf[1]);
+        } else {
+            newFile = from;
+        }
+        return newFile;
+    }
+
+    public static boolean isSameFile(File file, File childFile) {
+        boolean isSame = false;
+        String s = getPreSuf(file)[0];
+        String s1 = getPreSuf(childFile)[0];
+        String s2 = getPreSuf(file)[1];
+        String s3 = getPreSuf(childFile)[1];
+        if (s.equals(s1) && s2.equals(s3)) {
+            isSame = true;
+        }
+        return isSame;
+    }
+
+    public static String[] getPreSuf(File file) {
+        String prefixStr = null;
+        String fileName = file.getName();
+        int index = fileName.lastIndexOf(".");
+        String prefix = fileName.substring(0, index);
+        String suffix = fileName.substring(index);
+        if (prefix.endsWith(")") && prefix.contains("(")) {
+            int preIndex = prefix.lastIndexOf("(");
+            prefixStr = prefix.substring(0, preIndex);
+        } else {
+            prefixStr = prefix;
+        }
+        return new String[]{prefixStr, suffix};
+    }
+
+
 
 }

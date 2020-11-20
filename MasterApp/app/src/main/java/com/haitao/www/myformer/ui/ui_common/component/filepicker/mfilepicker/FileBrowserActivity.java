@@ -1,5 +1,7 @@
 package com.haitao.www.myformer.ui.ui_common.component.filepicker.mfilepicker;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -66,15 +68,15 @@ public class FileBrowserActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.menu_share:
                         //分享
-                        ToastUtils.showToast(FileBrowserActivity.this,"分享");
+                        ToastUtils.showToast(FileBrowserActivity.this, "分享");
                         break;
                     case R.id.menu_delete:
                         //删除
-                        ToastUtils.showToast(FileBrowserActivity.this,"删除");
+                        ToastUtils.showToast(FileBrowserActivity.this, "删除");
                         break;
                     case R.id.menu_more:
                         //更多
-                        ToastUtils.showToast(FileBrowserActivity.this,"更多");
+                        ToastUtils.showToast(FileBrowserActivity.this, "更多");
                         break;
                 }
             }
@@ -88,6 +90,7 @@ public class FileBrowserActivity extends AppCompatActivity {
             Toast.makeText(this, "所选SD卡为空！", Toast.LENGTH_SHORT).show();
             finish();
         } else {
+            Log.i(TAG, "文件路径: " + rootPath);
             getFileDir(rootPath);
         }
     }
@@ -121,6 +124,13 @@ public class FileBrowserActivity extends AppCompatActivity {
                 } else {
                     //todo查看详情
                     ToastUtils.showToast(FileBrowserActivity.this, "文件");
+//                    Intent intent = new Intent();
+//                    intent.setAction(Intent.ACTION_GET_CONTENT);
+//                    intent.addCategory(Intent.CATEGORY_OPENABLE);
+//                    intent.setType("*/*");
+//                    startActivityForResult(intent,1);
+
+                FilePickerUtil.openFile(FileBrowserActivity.this,file);
                 }
             }
         });

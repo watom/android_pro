@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!--子目录path临时为null-->
+    <files-path
+        name="files"
+        path="null" />
+    <cache-path
+        name="cache"
+        path="null" />
+    <external-path
+        name="external"
+        path="Download/companychat/files/" />
+    <external-cache-path
+        name="external-cache"
+        path="null" />
+    <external-media-path
+        name="external-media"
+        path="null" />
+    <external-files-path
+        name="external-files"
+        path="null" />
+</paths>

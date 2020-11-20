@@ -8,6 +8,8 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.core.content.FileProvider;
+
 import com.haitao.www.myformer.R;
 
 import java.io.File;
@@ -360,39 +362,67 @@ public class FilePickerUtil {
     }
 
 
-    public void openFile(Context context, String path) {
-        File file = new File(path);
+    public static void openFile(Context context, String filePath) {
+        File file = new File(filePath);
+        openFile(context, file);
+    }
+
+    public static void openFile(Context context, File file) {
         if (!file.exists()) {
-            Toast.makeText(context, "请先下载学习资料！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "文件异常，无法打开！", Toast.LENGTH_SHORT).show();
             return;
         }
         try {
+            //解决7.0以上的兼容性问题
+            Uri uri = FileProvider.getUriForFile(context, "com.haitao.www.myformer.fileprovider", file);
+            Log.i(TAG, "openFile: " + uri.toString());
+            //获取文件file的MIME类型
+            String fileType = getMIMEType(file);
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.addCategory(Intent.CATEGORY_DEFAULT);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setDataAndType(uri, "application/msword");
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(context, "未找到对应类型的应用，无法打开！", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public static void openFile01(Context context, File file) {
+        if (!file.exists()) {
+            Toast.makeText(context, "文件异常，无法打开！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        try {
+            //解决7.0以上的兼容性问题
+            Uri uri = FileProvider.getUriForFile(context, "com.haitao.www.myformer.fileprovider", file);
+            Log.i(TAG, "openFile: " + uri.toString());
+            //获取文件file的MIME类型
+            String type = getMIMEType(file);
             Intent intent = new Intent();
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //设置intent的Action属性
             intent.setAction(Intent.ACTION_VIEW);
-            //获取文件file的MIME类型
-            String type = getMIMEType(file);
-            //设置intent的data和Type属性。
-            intent.setDataAndType(/*uri*/Uri.fromFile(file), type);
-            //跳转
+            intent.addCategory(Intent.CATEGORY_DEFAULT);
+            //设置intent的data和Type属性
+            intent.setDataAndType(uri, type);
             context.startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(context, "sorry附件不能打开，请下载相关软件！", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "未找到对应类型的应用，无法打开！", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private String getMIMEType(File file) {
-
+    private static String getMIMEType(File file) {
         String type = "*/*";
-        String fName = file.getName();
+        String fileName = file.getName();
         //获取后缀名前的分隔符"."在fName中的位置。
-        int dotIndex = fName.lastIndexOf(".");
+        int dotIndex = fileName.lastIndexOf(".");
         if (dotIndex < 0) {
             return type;
         }
         /* 获取文件的后缀名*/
-        String end = fName.substring(dotIndex, fName.length()).toLowerCase();
+        String end = fileName.substring(dotIndex, fileName.length()).toLowerCase();
         if (end == "") return type;
         //在MIME和文件类型的匹配表中找到对应的MIME类型。
         for (int i = 0; i < MIME_MapTable.length; i++) { //MIME_MapTable??在这里你一定有疑问，这个MIME_MapTable是什么？
@@ -402,7 +432,7 @@ public class FilePickerUtil {
         return type;
     }
 
-    private final String[][] MIME_MapTable = {
+    private static String[][] MIME_MapTable = {
             //{后缀名，MIME类型}
             {".3gp", "video/3gpp"},
             {".apk", "application/vnd.android.package-archive"},
@@ -471,6 +501,4 @@ public class FilePickerUtil {
             {".zip", "application/x-zip-compressed"},
             {"", "*/*"}
     };
-
-
 }

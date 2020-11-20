@@ -6,24 +6,28 @@
     <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 二维码需要的权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 写SD卡权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> <!-- 读SD卡权限 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 短信验证登陆功能需要添加次权限来自动填充验证码，用不到可以去掉 -->
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" /> <!-- 写SD卡权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 读SD卡权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" /> <!-- 短信验证登陆功能需要添加次权限来自动填充验证码，用不到可以去掉 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /><!-- GPS权限 -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /><!--悬浮窗权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- GPS权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 悬浮窗权限 -->
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission
         android:name="android.permission.CHANGE_CONFIGURATION"
@@ -38,25 +42,27 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_02"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_02"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name="projects.main.weclome.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <intent-filter  android:autoVerify="true"
+            <intent-filter
+                android:autoVerify="true"
                 tools:targetApi="m">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http"
-                    android:host="com.haitao.www.mytestdemo"/>
+                <data
+                    android:host="com.haitao.www.mytestdemo"
+                    android:scheme="http" />
             </intent-filter>
         </activity>
         <activity
@@ -142,9 +148,7 @@
                     android:pathPrefix="/open_AD_page"
                     android:scheme="http" />
             </intent-filter>
-        </activity>
-
-        <!-- 集成ShareSDK的activity 开始（中间是ShareSDK的内容） -->
+        </activity> <!-- 集成ShareSDK的activity 开始（中间是ShareSDK的内容） -->
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -167,8 +171,7 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity>
-        <!-- 如果集成QQ分享，或者使用QQ客户端来进行QQ空间的分享，须要在此处添加一个回调activity，对ACTION_VIEW事件的过滤器，其中的scheme是“tencent”前缀再开发者应用的加上appId。如果此Activity和过滤器不设置，则分享结束以后不能得到正确的回调。 -->
+        </activity> <!-- 如果集成QQ分享，或者使用QQ客户端来进行QQ空间的分享，须要在此处添加一个回调activity，对ACTION_VIEW事件的过滤器，其中的scheme是“tencent”前缀再开发者应用的加上appId。如果此Activity和过滤器不设置，则分享结束以后不能得到正确的回调。 -->
         <activity
             android:name="cn.sharesdk.tencent.qq.ReceiveActivity"
             android:noHistory="true">
@@ -180,8 +183,7 @@
 
                 <data android:scheme="tencent100371282" />
             </intent-filter>
-        </activity>
-        <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
+        </activity> <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
         <meta-data
             android:name="Mob-AppKey"
             android:value="293edd8848c8a" />
@@ -199,8 +201,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <!-- 集成ShareSDK的activity 结束 -->
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- 集成ShareSDK的activity 结束 -->
         <activity
             android:name=".logic.LogicTest.GsonApplyActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -269,5 +270,18 @@
         <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.FileBrowserActivity" />
         <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.SearchActivity" />
         <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.SpreadActivity" />
+
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.haitao.www.myformer.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
     </application>
+
 </manifest>
