@@ -1,5 +1,6 @@
 package com.haitao.www.myformer.ui.ui_common.component.filepicker.mfilepicker;
 
+import android.Manifest;
 import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,7 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +29,7 @@ import com.haitao.www.myformer.R;
 import com.haitao.www.myformer.model.global.SimpleBean;
 import com.haitao.www.myformer.ui.ui_common.component.composewidget.TitleBar;
 import com.haitao.www.myformer.utils.DataUtil;
+import com.haitao.www.myformer.utils.PermissionUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,8 +94,8 @@ public class MFilePickerActivity extends AppCompatActivity {
         SimpleBean simpleBean3 = new SimpleBean(R.drawable.icon_menu_doc, "文档", 3);
         SimpleBean simpleBean4 = new SimpleBean(R.drawable.icon_menu_zip, "压缩包", 4);
         SimpleBean simpleBean5 = new SimpleBean(R.drawable.icon_menu_app, "应用", 5);
-        SimpleBean simpleBean6 = new SimpleBean(R.drawable.icon_menu_common, "常用", 6);
-        SimpleBean simpleBean7 = new SimpleBean(R.drawable.icon_menu_other, "其他", 7);
+        SimpleBean simpleBean6 = new SimpleBean(R.drawable.icon_menu_other, "其他", 6);
+        SimpleBean simpleBean7 = new SimpleBean(R.drawable.icon_menu_common, "最近", 7);
         menuList.add(simpleBean0);
         menuList.add(simpleBean1);
         menuList.add(simpleBean2);
@@ -137,9 +141,8 @@ public class MFilePickerActivity extends AppCompatActivity {
                         .setSingleChoiceItems(new String[]{"内置sd卡", "外部sd卡"}, 0,
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent intent = new Intent(MFilePickerActivity.this, FileBrowserActivity.class);
-                                        intent.putExtra("area", which != 0);
-                                        startActivityForResult(intent, RESULT_01);
+                                        String[] list = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                                        PermissionUtil.setCheck(MFilePickerActivity.this, list, 0);
                                         dialog.dismiss();
                                     }
                                 }).setNegativeButton("取消", null).show();
@@ -213,6 +216,21 @@ public class MFilePickerActivity extends AppCompatActivity {
                 bundle.putSerializable("SpreadList", bean);
                 intent.putExtras(bundle);
                 startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionUtil.setRequestResult(this, permissions, grantResults, new PermissionUtil.Callback() {
+            @Override
+            public void todoAfter() {
+                if (requestCode == 0) {
+                    Intent intent = new Intent(MFilePickerActivity.this, FileBrowserActivity.class);
+                    intent.putExtra("area", true);
+                    startActivityForResult(intent, RESULT_01);
+                }
             }
         });
     }

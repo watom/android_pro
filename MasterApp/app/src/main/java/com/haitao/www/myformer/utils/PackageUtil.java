@@ -3,9 +3,12 @@ package com.haitao.www.myformer.utils;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+
+import com.haitao.www.myformer.BuildConfig;
 
 import java.util.List;
 
@@ -13,8 +16,6 @@ public class PackageUtil {
 
     /**
      * 检查包是否存在
-     *
-     * @param packname包名
      */
     private boolean checkPackInfo(Context context, String packname) {
         PackageInfo packageInfo = null;
@@ -25,6 +26,20 @@ public class PackageUtil {
         }
         return packageInfo != null;
     }
+
+    /**
+     * 检查包是否存在
+     */
+    public static ApplicationInfo getAppInfo(Context context) {
+        PackageInfo packageInfo = null;
+        try {
+            packageInfo = context.getPackageManager().getPackageInfo(BuildConfig.APPLICATION_ID,0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return packageInfo.applicationInfo;
+    }
+
 
     /**
      * 通过包名拉起其他的APP
@@ -42,6 +57,7 @@ public class PackageUtil {
 
     /**
      * 判断其他的APP是否在后台运行，如果在后台运行中，直接打开APP
+     *
      * @param context
      * @param packageName
      */
@@ -64,8 +80,7 @@ public class PackageUtil {
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
         intent.setFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED | Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        List<ResolveInfo> list = pkgMag.queryIntentActivities(intent,
-                PackageManager.GET_ACTIVITIES);
+        List<ResolveInfo> list = pkgMag.queryIntentActivities(intent, PackageManager.GET_ACTIVITIES);
         for (int i = 0; i < list.size(); i++) {
             ResolveInfo info = list.get(i);
             if (info.activityInfo.packageName.equals(packageName)) {
