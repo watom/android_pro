@@ -2,6 +2,7 @@ package com.haitao.www.myformer.utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,6 +15,8 @@ import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import com.haitao.www.myformer.BuildConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,6 +92,41 @@ public class PermissionUtil {
 
     private static void startAppSettings(Activity activity) {
         ToastUtils.showToast(activity, "打开权限界面");
+        Intent intent = getLocalIntent(activity);
+        activity.startActivity(intent);
+    }
+
+    /**
+     * 只能兼容到4大品牌的，包括：华为，魅族，小米，Nexus。
+     * 注意：暂未找到oppon，vivo的相关意图。
+     */
+    public static Intent getLocalIntent(Activity context) {
+        Intent intent = new Intent();
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        String deviceBrand = SystemUtil.getDeviceBrand();
+        if (deviceBrand.equalsIgnoreCase("HUAWEI")) {
+            ComponentName componentName =  new ComponentName("com.huawei.systemmanager", "com.huawei.permissionmanager.ui.MainActivity");
+            intent.setComponent(componentName);
+        }else if(deviceBrand.equalsIgnoreCase("MEIZU")){
+            intent.setAction("com.meizu.safe.security.SHOW_APPSEC");
+            intent.addCategory(Intent.CATEGORY_DEFAULT);
+            intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
+        }else if(deviceBrand.equalsIgnoreCase("XIAOMI")){
+            intent.setAction("miui.intent.action.APP_PERM_EDITOR");
+            intent.putExtra("extra_pkgname", context.getPackageName());
+            ComponentName componentName =  new ComponentName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
+            intent.setComponent(componentName);
+        }else{
+            if (Build.VERSION.SDK_INT >= 9) {
+                intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+                intent.setData(Uri.fromParts("package",context.getPackageName(), null));
+            } else if (Build.VERSION.SDK_INT <= 8) {
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.setClassName("com.android.settings", "com.android.settings.InstalledAppDetails");
+                intent.putExtra("com.android.settings.ApplicationPkgName", context.getPackageName());
+            }
+        }
+        return intent;
     }
 
     public interface Callback {
