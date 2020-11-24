@@ -3,11 +3,8 @@ package com.haitao.www.myformer.utils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
-import android.provider.Settings;
 import android.util.Log;
 
 import androidx.annotation.IntRange;
@@ -23,15 +20,8 @@ public class PermissionUtil {
 
     public static void setCheck(@NonNull Activity activity, @NonNull String permissionName, @IntRange(from = 0) int requestCode) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            int state = ContextCompat.checkSelfPermission(activity, permissionName);
-            if (state != PackageManager.PERMISSION_GRANTED) {
-                boolean isShow = ActivityCompat.shouldShowRequestPermissionRationale(activity, permissionName);
-                if (isShow) {
-                    ActivityCompat.requestPermissions(activity, new String[]{permissionName}, requestCode);
-                } else {
-                    showWaringDialog(activity);
-                }
-            }
+            ContextCompat.checkSelfPermission(activity, permissionName);
+            ActivityCompat.requestPermissions(activity, new String[]{permissionName}, requestCode);
         } else {
             Log.i(TAG, permissionName + "已经获取权限");
         }
@@ -78,7 +68,7 @@ public class PermissionUtil {
     private static void showWaringDialog(Activity activity) {
         AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle("提示")
-                .setMessage("请前往设置->应用->" + PackageUtil.getAppInfo(activity).name + "->权限中打开相关权限，否则功能无法正常运行！")
+                .setMessage("请前往设置->应用->" + PackageUtil.getAppName(activity) + "->权限中打开相关权限，否则功能无法正常运行！")
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
