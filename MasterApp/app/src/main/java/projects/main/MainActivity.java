@@ -11,8 +11,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.Settings;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -22,6 +24,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -45,6 +48,7 @@ import projects.main.main_fragement.WodeFragment;
 
 import com.haitao.www.myformer.function.kernel_module.barcode.activity.CaptureActivity;
 import com.haitao.www.myformer.structure_design.StructureDesignActivity;
+import com.haitao.www.myformer.utils.AppBadgeUtil;
 import com.haitao.www.myformer.utils.DataUtil;
 import com.haitao.www.myformer.utils.Log;
 import com.haitao.www.myformer.utils.ToastUtils;
@@ -67,22 +71,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         ignoreBatteryOptimization(this);
         context = MainActivity.this;
+        initData();
         findViews();
         setFloatingAndDrawe();
         initFragment();
 
     }
 
+    private void initData() {
+        clearNotReadMsg(2);
+    }
+
+    /**
+     * 清空温度消息
+     */
+    private void clearNotReadMsg(int notReadMsgMount) {
+        if (notReadMsgMount > 0) {
+            AppBadgeUtil.setCount(0, this);
+        }
+    }
+
     private void findViews() {
         setToolBar();
-        radiogroupBottomMenu = (RadioGroup) findViewById(R.id.radiogroup_bottom_menu);
-        radiobutton01 = (RadioButton) findViewById(R.id.radiobutton_01);
-        radiobutton02 = (RadioButton) findViewById(R.id.radiobutton_02);
-        radiobutton03 = (RadioButton) findViewById(R.id.radiobutton_03);
-        radiobutton04 = (RadioButton) findViewById(R.id.radiobutton_04);
-        radiobutton05 = (RadioButton) findViewById(R.id.radiobutton_05);
+        radiogroupBottomMenu = findViewById(R.id.radiogroup_bottom_menu);
+        radiobutton01 = findViewById(R.id.radiobutton_01);
+        radiobutton02 = findViewById(R.id.radiobutton_02);
+        radiobutton03 = findViewById(R.id.radiobutton_03);
+        radiobutton04 = findViewById(R.id.radiobutton_04);
+        radiobutton05 = findViewById(R.id.radiobutton_05);
         radiogroupBottomMenu.setOnCheckedChangeListener(this);
-        framelayoutWebview = (WebView) findViewById(R.id.framelayout_webview);
+        framelayoutWebview = findViewById(R.id.framelayout_webview);
     }
 
     private void setToolBar() {
@@ -276,7 +294,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             ToastUtils.showToast(this, "点击了菜单键");
             super.openOptionsMenu();
             return super.onKeyDown(keyCode, event); // 如果不是back键正常响应
-        }else{
+        } else {
             return false;                           //继续传递该事件
         }
     }
@@ -286,7 +304,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //用户操作Activity进入后时调用此方法。
         //点击了home键，系统回调此方法。但是当出现来电、灭屏等操作时，不会调用。
         super.onUserLeaveHint();
-        ToastUtils.showToast(this, "当前Activity被放入后台" );
+        ToastUtils.showToast(this, "当前Activity被放入后台");
     }
 
 

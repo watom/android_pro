@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.dk.view.patheffect.PathTextView;
 import com.haitao.www.myformer.R;
+import com.haitao.www.myformer.utils.AppBadgeUtil;
 import com.haitao.www.myformer.utils.CountDownTimerUtils;
 import com.haitao.www.myformer.utils.Log;
 
@@ -98,6 +99,9 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
 
     private void setAnimation() {
         AlphaAnimation alphaAnimation = new AlphaAnimation(0.5f, 1.0f);
