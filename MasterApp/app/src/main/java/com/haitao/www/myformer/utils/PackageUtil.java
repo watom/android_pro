@@ -13,8 +13,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
 
-import com.haitao.www.myformer.BuildConfig;
-
 import java.io.File;
 import java.util.List;
 
@@ -28,13 +26,17 @@ public class PackageUtil {
         try {
             PackageManager packageManager = context.getPackageManager();
             PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
-            appName = packageInfo.applicationInfo.nonLocalizedLabel.toString();
+            ApplicationInfo applicationInfo = packageInfo.applicationInfo;
+            appName = applicationInfo.nonLocalizedLabel.toString();
+            if (DataUtil.isEmpty(appName)) {
+                int labelRes = applicationInfo.labelRes;
+                appName = context.getResources().getString(labelRes);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return appName;
     }
-
 
     /**
      * 获取正在运行App的版本号
@@ -54,7 +56,6 @@ public class PackageUtil {
         return new Long((long) 0);
     }
 
-
     /**
      * 检查包是否存在
      */
@@ -69,39 +70,7 @@ public class PackageUtil {
     }
 
     /**
-     * 检查包是否存在
-     */
-    public static ApplicationInfo getAppInfo(Context context) {
-        PackageInfo packageInfo = null;
-        try {
-            packageInfo = context.getPackageManager().getPackageInfo(BuildConfig.APPLICATION_ID, 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return packageInfo.applicationInfo;
-    }
-
-
-    /**
-     * 获取App名称
-     */
-    public static String getAppName(Context context) {
-        String appName = null;
-        try {
-            ApplicationInfo applicationInfo = getAppInfo(context);
-            int labelRes = applicationInfo.labelRes;
-            return context.getResources().getString(labelRes);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
      * 通过包名拉起其他的APP
-     *
-     * @param context
-     * @param packname
      */
     private void launchOtherApp(Context context, String packname) {
         Intent intent = context.getPackageManager().getLaunchIntentForPackage(packname);
@@ -168,11 +137,9 @@ public class PackageUtil {
         return 0;
     }
 
-
     public static boolean hasLocalInstallPackage(String path) {
         return !DataUtil.isEmpty(getLocalFileName(path));
     }
-
 
     /**
      * 获取本地安装包的名称
@@ -268,6 +235,4 @@ public class PackageUtil {
         Drawable drawable = packageManager.getApplicationIcon(applicationInfo);
         return drawable;
     }
-
-
 }
