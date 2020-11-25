@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 
@@ -69,9 +71,10 @@ public class PermissionUtil {
     }
 
     private static void showWaringDialog(Activity activity) {
+        String appName = PackageUtil.getAppName(activity);
         AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle("提示")
-                .setMessage("请前往设置->应用->" + PackageUtil.getAppName(activity) + "->权限中打开相关权限，否则功能无法正常运行！")
+                .setMessage("请前往设置->应用->" + appName + "->权限中打开相关权限，否则功能无法正常运行！")
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -100,7 +103,7 @@ public class PermissionUtil {
         }else if(deviceBrand.equalsIgnoreCase("MEIZU")){
             intent.setAction("com.meizu.safe.security.SHOW_APPSEC");
             intent.addCategory(Intent.CATEGORY_DEFAULT);
-            intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
+            intent.putExtra("packageName", context.getPackageName());
         }else if(deviceBrand.equalsIgnoreCase("XIAOMI")){
             intent.setAction("miui.intent.action.APP_PERM_EDITOR");
             intent.putExtra("extra_pkgname", context.getPackageName());
