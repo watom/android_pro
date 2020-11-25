@@ -269,6 +269,7 @@
         <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.FileBrowserActivity" />
         <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.SearchActivity" />
         <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.SpreadActivity" />
+        <activity android:name=".ui.ui_common.component.imageview.load_image.LoadImageActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -27,11 +27,8 @@ public class PackageUtil {
             PackageManager packageManager = context.getPackageManager();
             PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
             ApplicationInfo applicationInfo = packageInfo.applicationInfo;
-            appName = applicationInfo.nonLocalizedLabel.toString();
-            if (DataUtil.isEmpty(appName)) {
-                int labelRes = applicationInfo.labelRes;
-                appName = context.getResources().getString(labelRes);
-            }
+            int labelRes = applicationInfo.labelRes;
+            appName = context.getResources().getString(labelRes);
         } catch (Exception e) {
             e.printStackTrace();
         }

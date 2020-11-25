@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.haitao.www.myformer.R;
 import com.haitao.www.myformer.ui.ui_common.component.imageview.circle_imageview.CircleImageViewActivity;
+import com.haitao.www.myformer.ui.ui_common.component.imageview.load_image.LoadImageActivity;
 
 public class ImageViewCategory extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private String[] content;
@@ -24,7 +25,7 @@ public class ImageViewCategory extends AppCompatActivity implements AdapterView.
     }
 
     private void initData(ListView view) {
-        content = new String[]{"圆形图片"};
+        content = new String[]{"圆形图片","图片加载方式"};
         ArrayAdapter stringArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, content);
         view.setAdapter(stringArrayAdapter);
         view.setOnItemClickListener(this);
@@ -36,6 +37,9 @@ public class ImageViewCategory extends AppCompatActivity implements AdapterView.
         switch (s) {
             case "圆形图片":
                 startActivity(new Intent(this, CircleImageViewActivity.class));
+                break;
+            case "图片加载方式":
+                startActivity(new Intent(this, LoadImageActivity.class));
                 break;
         }
     }

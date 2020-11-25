@@ -74,6 +74,7 @@ public class PermissionUtil {
         String appName = PackageUtil.getAppName(activity);
         AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle("提示")
+                .setIcon(PackageUtil.getAppLogoDrawable(activity))
                 .setMessage("请前往设置->应用->" + appName + "->权限中打开相关权限，否则功能无法正常运行！")
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
@@ -84,7 +85,6 @@ public class PermissionUtil {
     }
 
     private static void startAppSettings(Activity activity) {
-        ToastUtils.showToast(activity, "打开权限界面");
         Intent intent = getLocalIntent(activity);
         activity.startActivity(intent);
     }

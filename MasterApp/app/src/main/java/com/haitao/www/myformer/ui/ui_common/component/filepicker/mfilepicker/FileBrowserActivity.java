@@ -1,7 +1,5 @@
 package com.haitao.www.myformer.ui.ui_common.component.filepicker.mfilepicker;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -12,14 +10,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.haitao.www.myformer.R;
 import com.haitao.www.myformer.ui.ui_common.component.composewidget.TitleBar;
-import com.haitao.www.myformer.utils.PermissionUtil;
 import com.haitao.www.myformer.utils.ToastUtils;
 
 import java.io.File;
