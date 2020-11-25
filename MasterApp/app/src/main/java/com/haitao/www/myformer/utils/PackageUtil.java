@@ -68,6 +68,34 @@ public class PackageUtil {
         return packageInfo != null;
     }
 
+    /**
+     * 检查包是否存在
+     */
+    public static ApplicationInfo getAppInfo(Context context) {
+        PackageInfo packageInfo = null;
+        try {
+            packageInfo = context.getPackageManager().getPackageInfo(BuildConfig.APPLICATION_ID, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return packageInfo.applicationInfo;
+    }
+
+
+    /**
+     * 获取App名称
+     */
+    public static String getAppName(Context context) {
+        String appName = null;
+        try {
+            ApplicationInfo applicationInfo = getAppInfo(context);
+            int labelRes = applicationInfo.labelRes;
+            return context.getResources().getString(labelRes);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     /**
      * 通过包名拉起其他的APP

@@ -90,7 +90,6 @@ public class FileBrowserActivity extends AppCompatActivity {
         rootPath = FilePickerUtil.getRootPath(isSDStorage);
         if (rootPath == null) {
             Toast.makeText(FileBrowserActivity.this, "所选SD卡为空！", Toast.LENGTH_SHORT).show();
-//                        finish();
         } else {
             Log.i(TAG, "文件路径: " + rootPath);
             getFileDir(rootPath);
