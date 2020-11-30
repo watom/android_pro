@@ -2,12 +2,15 @@ package com.haitao.www.myformer.ui.ui_common.component.imageview;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.haitao.www.myformer.R;
 import com.haitao.www.myformer.ui.ui_common.component.imageview.circle_imageview.CircleImageViewActivity;
@@ -15,20 +18,26 @@ import com.haitao.www.myformer.ui.ui_common.component.imageview.load_image.LoadI
 
 public class ImageViewCategory extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private String[] content;
+    private ListView listview;
+    private TextView imageViewAttr;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listview);
-        ListView listview = findViewById(R.id.list_view_enter);
-        initData(listview);
+        initView();
+        initData();
     }
 
-    private void initData(ListView view) {
-        content = new String[]{"圆形图片","图片加载方式"};
+    private void initView() {
+        listview = findViewById(R.id.list_view_enter);
+    }
+
+    private void initData() {
+        content = new String[]{"圆形图片", "图片加载方式"};
         ArrayAdapter stringArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, content);
-        view.setAdapter(stringArrayAdapter);
-        view.setOnItemClickListener(this);
+        listview.setAdapter(stringArrayAdapter);
+        listview.setOnItemClickListener(this);
     }
 
     @Override

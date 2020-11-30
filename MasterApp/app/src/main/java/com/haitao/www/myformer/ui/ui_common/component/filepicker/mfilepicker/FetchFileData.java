@@ -1,13 +1,11 @@
 package com.haitao.www.myformer.ui.ui_common.component.filepicker.mfilepicker;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -18,10 +16,12 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+import androidx.annotation.RequiresApi;
 
+import com.haitao.www.myformer.R;
 import com.haitao.www.myformer.model.global.FileBean;
+import com.haitao.www.myformer.utils.PermissionUtil;
+import com.haitao.www.myformer.utils.ToastUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class FetchFileData {
     public static final String TAG = "FetchFileData文件数据源";
@@ -41,112 +42,110 @@ public class FetchFileData {
     public FetchFileData() {
     }
 
-    public List<File> getFilesByType(Activity activity) {
+    private static class Builder {
+        private static FetchFileData instance = new FetchFileData();
+    }
+
+    public static FetchFileData getInstance() {
+        return FetchFileData.Builder.instance;
+    }
+
+    public List<File> getFileInfoByType(Activity activity, FileType fileType) {
         List<File> fileList = null;
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(activity, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                //先判断有没有权限 ，没有就在这里进行权限的申请
-                ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
-                fileList = getLocalImages(activity);
-            } else {
-                //已经获取到摄像头权限了,继续业务代码
-                fileList = getLocalImages(activity);
-            }
-        } else {
-            //这个说明系统版本在6.0之下，不需要动态获取权限。
-            fileList = getLocalImages(activity);
+        switch (fileType) {
+            case IMAGE:
+                fileList = getImagesByType(activity);
+                break;
+            case VIDEO:
+                fileList = getVideosByType(activity);
+                break;
+            case AUDIO:
+                ToastUtils.showToast(activity, "打开音频");
+                break;
+            case FILE:
+                fileList = getFilesByType(activity);
+                break;
+            case WINRAR:
+                ToastUtils.showToast(activity, "打开压缩包");
+                break;
+            case APK:
+                ToastUtils.showToast(activity, "打开APK");
+                break;
+            case OTHER:
+                ToastUtils.showToast(activity, "打开其他");
+                break;
+            case RECENTLY:
+                ToastUtils.showToast(activity, "打开最近");
+                break;
         }
         return fileList;
     }
 
     /**
-     * 获取本地所有的图片
+     * 获取本地所有文件
      */
-    private List<FileBean> getLocalImage(Context context) {
-        List<FileBean> list = new ArrayList<>();
-        String[] projection = {
-                MediaStore.Images.Media.DATA,
-                MediaStore.Images.Media.DISPLAY_NAME,
-                MediaStore.Images.Media.SIZE
-        };
-        //全部图片
-        String where = MediaStore.Images.Media.MIME_TYPE + "=? or "
-                + MediaStore.Images.Media.MIME_TYPE + "=? or "
-                + MediaStore.Images.Media.MIME_TYPE + "=?";
-        //指定格式
-        String[] whereArgs = {"image/jpeg", "image/png", "image/jpg"};
-        //查询
-//        Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, where, whereArgs,
-//                MediaStore.Images.Media.DATE_MODIFIED + " desc ");
-        Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, where, whereArgs, null);
-        if (cursor == null) {
-            return list;
-        }
-        //遍历
-        while (cursor.moveToNext()) {
-            FileBean fileBean = new FileBean();
-            //获取图片的名称
-            String title = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME));
-            long size = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.SIZE));
+    private static List<File> getFilesByType(Context context) {
+        Cursor cursor = null;
+        List<File> list = new ArrayList<>();
+        try {
+            cursor = context.getContentResolver().query(MediaStore.Files.getContentUri("external"),
+                    null, null, null, null);
+            if (cursor == null) {
+                return list;
+            }
+            int columnIndexOrThrow_ID = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns._ID);
+            int columnIndexOrThrow_MIME_TYPE = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.MIME_TYPE);
+            int columnIndexOrThrow_DATA = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DATA);
+            int columnIndexOrThrow_SIZE = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.SIZE);
+            int columnIndexOrThrow_DATE_MODIFIED = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DATE_MODIFIED);
 
-            //获取图片的生成日期
-            byte[] data = cursor.getBlob(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+            while (cursor.moveToNext()) {
+                FileBean fileBean = new FileBean();
+                //获取图片的名称
+                String title = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME));
+                long size = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.SIZE));
 
-            String path = new String(data, 0, data.length - 1);
-            File file = new File(path);
+                //获取图片的生成日期
+                byte[] data = cursor.getBlob(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
 
-            if (size < 5 * 1024 * 1024) {//<5M
-                long time = file.lastModified();
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-                String t = format.format(time);
-                fileBean.setIcon(t);
-                fileBean.setTitle(title);
-                fileBean.setFilePath(path);
-                fileBean.setFileSize(size);
-                fileBean.setChecked(false);
-                fileBean.setFileType(6);
-                fileBean.setFileId("6");
-                fileBean.setFileName("haihai");
-                list.add(fileBean);
+                String path = new String(data, 0, data.length - 1);
+                File file = new File(path);
+                list.add(file);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
             }
         }
-        cursor.close();
         return list;
     }
 
     /**
      * 获取本地所有的图片
      */
-    private List<File> getLocalImages(Context context) {
+    private static List<File> getImagesByType(Context context) {
         List<File> list = new ArrayList<>();
         String[] projection = {
                 MediaStore.Images.Media.DATA,
                 MediaStore.Images.Media.DISPLAY_NAME,
                 MediaStore.Images.Media.SIZE
         };
-        //全部图片
         String where = MediaStore.Images.Media.MIME_TYPE + "=? or "
                 + MediaStore.Images.Media.MIME_TYPE + "=? or "
                 + MediaStore.Images.Media.MIME_TYPE + "=?";
-        //指定格式
         String[] whereArgs = {"image/jpeg", "image/png", "image/jpg"};
-        //查询
-        Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, where, whereArgs,
-                MediaStore.Images.Media.DATE_MODIFIED + " desc ");
-//        Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, where, whereArgs, null);
+        Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                projection, where, whereArgs, MediaStore.Images.Media.DATE_MODIFIED + " desc ");
         if (cursor == null) {
             return list;
         }
-        //遍历
         while (cursor.moveToNext()) {
             FileBean fileBean = new FileBean();
-            //获取图片的名称
             String title = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME));
             long size = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.SIZE));
-
-            //获取图片的生成日期
             byte[] data = cursor.getBlob(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
-
             String path = new String(data, 0, data.length - 1);
             File file = new File(path);
             list.add(file);
@@ -171,7 +170,6 @@ public class FetchFileData {
             int columnIndexOrThrow_MIME_TYPE = c.getColumnIndexOrThrow(MediaStore.Files.FileColumns.MIME_TYPE);
             int columnIndexOrThrow_DATA = c.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DATA);
             int columnIndexOrThrow_SIZE = c.getColumnIndexOrThrow(MediaStore.Files.FileColumns.SIZE);
-            // 更改时间
             int columnIndexOrThrow_DATE_MODIFIED = c.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DATE_MODIFIED);
 
             int tempId = 0;
@@ -191,14 +189,6 @@ public class FetchFileData {
                 long size = c.getLong(columnIndexOrThrow_SIZE);
                 long modified_date = c.getLong(columnIndexOrThrow_DATE_MODIFIED);
                 File file = new File(path);
-                String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(file.lastModified()));
-                FileBean info = new FileBean();
-                info.setName(displayName);
-                info.setFilePath(path);
-                info.setFileSize(size);
-                info.setFileId((tempId++) + "");
-                info.setTime(time);
-                files.add(info);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -208,6 +198,73 @@ public class FetchFileData {
             }
         }
         return files;
+    }
+
+
+    /**
+     * 获取本地所有的视频
+     */
+    public List<File> getVideosByType(Context context) {
+        String[] projection = new String[0];
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            projection = new String[]{
+                    MediaStore.Video.Media.DATA,
+                    MediaStore.Video.Media.DISPLAY_NAME,
+                    MediaStore.Video.Media.DURATION,
+                    MediaStore.Video.Media.SIZE
+            };
+        }
+        //全部图片
+        String where = MediaStore.Images.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=? or "
+                + MediaStore.Video.Media.MIME_TYPE + "=?";
+        String[] whereArgs = {"video/mp4", "video/3gp", "video/aiv", "video/rmvb", "application/vnd.rn-realmedia", "aapplication/vnd.rn-realmedia","video/quicktime",
+                "video/vob", "video/flv", "video/mkv", "video/mov", "video/mpg", "video/x-ms-wmv", "video/x-msvideo", "video/3gpp", "video/x-matroska"};
+        List<File> list = new ArrayList<>();
+        Cursor cursor = context.getContentResolver().query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+                projection, where, whereArgs, MediaStore.Video.Media.DATE_ADDED + " DESC ");
+        if (cursor == null) {
+            return list;
+        }
+        try {
+            while (cursor.moveToNext()) {
+                list.clear();
+                long size = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.SIZE)); // 大小
+                if (size < 600 * 1024 * 1024) {//<600M
+                    String title = cursor.getString(cursor.getColumnIndex(MediaStore.Video.Media.DISPLAY_NAME));
+                    String path = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA)); // 路径
+                    long duration = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DURATION)); // 时长
+//                    fileBean.setTitle(title);
+//                    fileBean.setIcon(path);
+//                    fileBean.setFilePath(path);
+//                    fileBean.setChecked(false);
+//                    fileBean.setTime(System.currentTimeMillis() + "");
+//                    SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+//                    format.setTimeZone(TimeZone.getTimeZone("GMT+0"));
+//                    fileBean.setDuration(format.format(duration));
+                    File file = new File(path);
+                    list.add(file);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            cursor.close();
+        }
+        return list;
     }
 
 
@@ -437,14 +494,18 @@ public class FetchFileData {
     /**
      * 图片类文件
      * 绝对路径转Uri
-     * @param context this
+     *
+     * @param context   this
      * @param imageFile file:///storage/emulated/0/Android/data/com.zn_android.zn/cache/PostPicture/20170905193015.jpg
      */
     public static Uri getImageContentUri(Context context, File imageFile) {
         String filePath = imageFile.getAbsolutePath();
-        Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                new String[]{MediaStore.Images.Media._ID}, MediaStore.Images.Media.DATA + "=? ",
-                new String[]{filePath}, null);
+        Cursor cursor = context.getContentResolver().query(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                new String[]{MediaStore.Images.Media._ID},
+                MediaStore.Images.Media.DATA + "=? ",
+                new String[]{filePath},
+                null);
         if (cursor != null && cursor.moveToFirst()) {
             int id = cursor.getInt(cursor.getColumnIndex(MediaStore.MediaColumns._ID));
             Uri baseUri = Uri.parse("content://media/external/images/media");
@@ -463,10 +524,11 @@ public class FetchFileData {
     /**
      * 图片类文件
      * Uri转绝对路径
-     * @param context this
+     *
+     * @param context          this
      * @param selectedVideoUri content://media/external/images/media/212304
      */
-    public static String getFilePathFromContentUri(Context context,Uri selectedVideoUri) {
+    public static String getFilePathFromContentUri(Context context, Uri selectedVideoUri) {
         String filePath;
         String[] filePathColumn = {MediaStore.MediaColumns.DATA};
         ContentResolver contentResolver = context.getContentResolver();

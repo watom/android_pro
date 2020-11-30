@@ -10,64 +10,88 @@
         android:layout_width="match_parent"
         android:layout_height="168dp"
         android:background="@mipmap/icon_me_bg"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:padding="15dp">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:gravity="end"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/nameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:text=""
-                android:textColor="@color/white"
-                android:textSize="24sp" />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/icon_message" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"
+                android:src="@mipmap/icon_setting_2" />
 
-                <TextView
-                    android:id="@+id/depTextView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:singleLine="true"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-            </LinearLayout>
         </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/shape_white_dot">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <com.haitao.www.myformer.ui.ui_common.widget.RoundImageView
-                android:id="@+id/portraitImageView"
-                android:layout_width="58dp"
-                android:layout_height="58dp"
-                android:layout_centerInParent="true"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/default_header" />
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/shape_white_dot">
+
+                <com.haitao.www.myformer.ui.ui_common.widget.RoundImageView
+                    android:id="@+id/portraitImageView"
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    android:layout_centerInParent="true"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/default_header" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="企信"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/depTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:text="百讯/研发中心"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_user_info"
         android:layout_width="match_parent"
-        android:layout_height="135dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="135dp"
         android:layout_marginEnd="15dp"
@@ -75,7 +99,7 @@
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
         app:cardMaxElevation="10dp"
-        app:contentPadding="24dp">
+        app:contentPadding="20dp">
 
         <include
             android:id="@+id/view_my_info_card"
@@ -93,30 +117,30 @@
             android:id="@+id/myInfoOptionItemView"
             style="@style/OptionItem"
             android:background="@drawable/selector_common_item"
+            app:dividerLine_left_pading="15dp"
+            app:dividerLine_right_pading="15dp"
             app:divider_align_to_title="true"
             app:start_src="@mipmap/icon_my_info"
-            app:title="我的信息"
-            app:dividerLine_left_pading="15dp"
-            app:dividerLine_right_pading="15dp"/>
+            app:title="我的信息" />
 
         <com.haitao.www.myformer.ui.ui_common.widget.OptionItemView
             android:id="@+id/secureseOptionItemView"
             style="@style/OptionItem"
             android:background="@drawable/selector_common_item"
+            app:dividerLine_left_pading="15dp"
+            app:dividerLine_right_pading="15dp"
             app:divider_align_to_title="true"
             app:start_src="@mipmap/icon_securese"
-            app:title="账号安全"
-            app:dividerLine_left_pading="15dp"
-            app:dividerLine_right_pading="15dp"/>
+            app:title="账号安全" />
 
         <com.haitao.www.myformer.ui.ui_common.widget.OptionItemView
             android:id="@+id/settintOptionItemView"
             style="@style/OptionItem"
             android:background="@drawable/selector_common_item"
             android:clickable="true"
-            app:start_src="@mipmap/icon_setting"
-            app:title="设置"
             app:dividerLine_left_pading="15dp"
-            app:dividerLine_right_pading="15dp"/>
+            app:dividerLine_right_pading="15dp"
+            app:start_src="@mipmap/icon_setting"
+            app:title="设置" />
     </LinearLayout>
 </RelativeLayout>

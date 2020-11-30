@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,7 @@ import com.haitao.www.myformer.model.global.SimpleBean;
 import com.haitao.www.myformer.ui.ui_common.component.composewidget.TitleBar;
 import com.haitao.www.myformer.utils.DataUtil;
 import com.haitao.www.myformer.utils.PermissionUtil;
+import com.haitao.www.myformer.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,14 +90,14 @@ public class MFilePickerActivity extends AppCompatActivity {
 
     private void initType(RecyclerView fileMenu) {
         List<SimpleBean> menuList = new ArrayList<>();
-        SimpleBean simpleBean0 = new SimpleBean(R.drawable.icon_menu_image, "图片", 0);
-        SimpleBean simpleBean1 = new SimpleBean(R.drawable.icon_menu_video, "视频", 1);
-        SimpleBean simpleBean2 = new SimpleBean(R.drawable.icon_menu_audio, "音频", 2);
-        SimpleBean simpleBean3 = new SimpleBean(R.drawable.icon_menu_doc, "文档", 3);
-        SimpleBean simpleBean4 = new SimpleBean(R.drawable.icon_menu_zip, "压缩包", 4);
-        SimpleBean simpleBean5 = new SimpleBean(R.drawable.icon_menu_app, "应用", 5);
-        SimpleBean simpleBean6 = new SimpleBean(R.drawable.icon_menu_other, "其他", 6);
-        SimpleBean simpleBean7 = new SimpleBean(R.drawable.icon_menu_common, "最近", 7);
+        SimpleBean simpleBean0 = new SimpleBean(R.drawable.icon_menu_image, "图片", FileType.IMAGE, 0);
+        SimpleBean simpleBean1 = new SimpleBean(R.drawable.icon_menu_video, "视频", FileType.VIDEO, 1);
+        SimpleBean simpleBean2 = new SimpleBean(R.drawable.icon_menu_audio, "音频", FileType.AUDIO, 2);
+        SimpleBean simpleBean3 = new SimpleBean(R.drawable.icon_menu_doc, "文档", FileType.FILE, 3);
+        SimpleBean simpleBean4 = new SimpleBean(R.drawable.icon_menu_zip, "压缩包", FileType.WINRAR, 4);
+        SimpleBean simpleBean5 = new SimpleBean(R.drawable.icon_menu_app, "应用", FileType.APK, 5);
+        SimpleBean simpleBean6 = new SimpleBean(R.drawable.icon_menu_other, "其他", FileType.OTHER, 6);
+        SimpleBean simpleBean7 = new SimpleBean(R.drawable.icon_menu_common, "最近", FileType.RECENTLY, 7);
         menuList.add(simpleBean0);
         menuList.add(simpleBean1);
         menuList.add(simpleBean2);
@@ -142,7 +144,7 @@ public class MFilePickerActivity extends AppCompatActivity {
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         String[] list = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                                        PermissionUtil.setCheck(MFilePickerActivity.this, list, 0);
+                                        PermissionUtil.getInstance().setCheck(MFilePickerActivity.this, list, 0);
                                         dialog.dismiss();
                                     }
                                 }).setNegativeButton("取消", null).show();
@@ -211,11 +213,8 @@ public class MFilePickerActivity extends AppCompatActivity {
         fileMenuAdapter.setOnClickItemListener(new FileMenuAdapter.OnClickItemListener() {
             @Override
             public void onClick(SimpleBean bean) {
-                Intent intent = new Intent(MFilePickerActivity.this, SpreadActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("SpreadList", bean);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                String[] list = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                PermissionUtil.getInstance().setCheck(MFilePickerActivity.this, list, 1, bean);
             }
         });
     }
@@ -223,13 +222,20 @@ public class MFilePickerActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        PermissionUtil.setRequestResult(this, permissions, grantResults, new PermissionUtil.Callback() {
+        PermissionUtil.getInstance().setRequestResult(this, permissions, grantResults, new PermissionUtil.Callback() {
             @Override
-            public void todoAfter() {
+            public void todoAfter(Object object) {
                 if (requestCode == 0) {
                     Intent intent = new Intent(MFilePickerActivity.this, FileBrowserActivity.class);
                     intent.putExtra("area", true);
                     startActivityForResult(intent, RESULT_01);
+                } else if (requestCode == 1 && !DataUtil.isEmpty(object)) {
+                    SimpleBean bean = (SimpleBean) object;
+                    Intent intent = new Intent(MFilePickerActivity.this, SpreadActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("SpreadList", bean);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
                 }
             }
         });

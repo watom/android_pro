@@ -1,14 +1,15 @@
 package com.haitao.www.myformer.model.global;
 
 public class FileBean {
+    private String fileId;
     private String icon;
     private String title;
     private String name;
     private String filePath;
     private String fileName;
     private String time;
+    private String duration;
     private long fileSize;
-    private String fileId;
     private int fileType;
     private boolean isChecked;
 
@@ -95,17 +96,26 @@ public class FileBean {
         isChecked = checked;
     }
 
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
     @Override
     public String toString() {
         return "FileBean{" +
-                "icon='" + icon + '\'' +
+                "fileId='" + fileId + '\'' +
+                ", icon='" + icon + '\'' +
                 ", title='" + title + '\'' +
                 ", name='" + name + '\'' +
                 ", filePath='" + filePath + '\'' +
                 ", fileName='" + fileName + '\'' +
                 ", time='" + time + '\'' +
+                ", duration='" + duration + '\'' +
                 ", fileSize=" + fileSize +
-                ", fileId='" + fileId + '\'' +
                 ", fileType=" + fileType +
                 ", isChecked=" + isChecked +
                 '}';

@@ -15,13 +15,23 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.haitao.www.myformer.BuildConfig;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class PermissionUtil {
     public static final String TAG = "权限申请";
+    private Object object;
+
+    private PermissionUtil() {
+    }
+
+    private static class Builder {
+        private static PermissionUtil instance = new PermissionUtil();
+    }
+
+    public static PermissionUtil getInstance() {
+        return Builder.instance;
+    }
 
     public static void setCheck(@NonNull Activity activity, @NonNull String permissionName, @IntRange(from = 0) int requestCode) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -32,8 +42,13 @@ public class PermissionUtil {
         }
     }
 
-    public static void setCheck(@NonNull Activity activity, @NonNull String[] permissionList, @IntRange(from = 0) int requestCode) {
+    public void setCheck(@NonNull Activity activity, @NonNull String[] permissionList, @IntRange(from = 0) int requestCode) {
+        this.setCheck(activity, permissionList, requestCode, null);
+    }
+
+    public void setCheck(@NonNull Activity activity, @NonNull String[] permissionList, @IntRange(from = 0) int requestCode, Object object) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            this.object = object;
             List<String> list = new ArrayList<>();
             for (String permission : permissionList) {
                 int state = ContextCompat.checkSelfPermission(activity, permission);
@@ -53,7 +68,7 @@ public class PermissionUtil {
         }
     }
 
-    public static void setRequestResult(@NonNull Activity activity, @NonNull String[] permissions, @NonNull int[] grantResults, Callback callback) {
+    public void setRequestResult(@NonNull Activity activity, @NonNull String[] permissions, @NonNull int[] grantResults, Callback callback) {
         boolean can = true;
         boolean todo = true;
         for (int i = 0; i < permissions.length; i++) {
@@ -64,13 +79,13 @@ public class PermissionUtil {
         }
 
         if (can) {
-            callback.todoAfter();
+            callback.todoAfter(object);
         } else if (!todo) {
             showWaringDialog(activity);
         }
     }
 
-    private static void showWaringDialog(Activity activity) {
+    private void showWaringDialog(Activity activity) {
         String appName = PackageUtil.getAppName(activity);
         AlertDialog dialog = new AlertDialog.Builder(activity)
                 .setTitle("提示")
@@ -84,7 +99,7 @@ public class PermissionUtil {
                 }).show();
     }
 
-    private static void startAppSettings(Activity activity) {
+    private void startAppSettings(Activity activity) {
         Intent intent = getLocalIntent(activity);
         activity.startActivity(intent);
     }
@@ -93,26 +108,26 @@ public class PermissionUtil {
      * 只能兼容到4大品牌的，包括：华为，魅族，小米，Nexus。
      * 注意：暂未找到oppon，vivo的相关意图。
      */
-    public static Intent getLocalIntent(Activity context) {
+    public Intent getLocalIntent(Activity context) {
         Intent intent = new Intent();
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         String deviceBrand = SystemUtil.getDeviceBrand();
         if (deviceBrand.equalsIgnoreCase("HUAWEI")) {
-            ComponentName componentName =  new ComponentName("com.huawei.systemmanager", "com.huawei.permissionmanager.ui.MainActivity");
+            ComponentName componentName = new ComponentName("com.huawei.systemmanager", "com.huawei.permissionmanager.ui.MainActivity");
             intent.setComponent(componentName);
-        }else if(deviceBrand.equalsIgnoreCase("MEIZU")){
+        } else if (deviceBrand.equalsIgnoreCase("MEIZU")) {
             intent.setAction("com.meizu.safe.security.SHOW_APPSEC");
             intent.addCategory(Intent.CATEGORY_DEFAULT);
             intent.putExtra("packageName", context.getPackageName());
-        }else if(deviceBrand.equalsIgnoreCase("XIAOMI")){
+        } else if (deviceBrand.equalsIgnoreCase("XIAOMI")) {
             intent.setAction("miui.intent.action.APP_PERM_EDITOR");
             intent.putExtra("extra_pkgname", context.getPackageName());
-            ComponentName componentName =  new ComponentName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
+            ComponentName componentName = new ComponentName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
             intent.setComponent(componentName);
-        }else{
+        } else {
             if (Build.VERSION.SDK_INT >= 9) {
                 intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
-                intent.setData(Uri.fromParts("package",context.getPackageName(), null));
+                intent.setData(Uri.fromParts("package", context.getPackageName(), null));
             } else if (Build.VERSION.SDK_INT <= 8) {
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.setClassName("com.android.settings", "com.android.settings.InstalledAppDetails");
@@ -123,6 +138,6 @@ public class PermissionUtil {
     }
 
     public interface Callback {
-        void todoAfter();
+        void todoAfter(Object object);
     }
 }
