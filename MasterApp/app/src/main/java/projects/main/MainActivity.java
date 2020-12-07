@@ -104,16 +104,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setToolBar() {
-
         toolbar = findViewById(R.id.toolbar);
+        // Navigation Icon 要設定在 setSupoortActionBar 才有作用否則會出現 back button
+        toolbar.setNavigationIcon(R.drawable.ic_chat);
         setSupportActionBar(toolbar);//利用Toolbar代替ActionBar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//左侧添加一个默认的返回图标
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         toolbar.setTitle("开发集合");
         toolbar.setSubtitle("专门用于测试Demo");
 
-        // Navigation Icon 要設定在 setSupoortActionBar 才有作用否則會出現 back button
-        toolbar.setNavigationIcon(R.drawable.ic_chat);
+
         //设置Toolbar右边的menu入口图片,如果不设置会使用系统默认的灰色三点图标
         toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_plus));
     }
@@ -143,7 +143,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
         //设置navigationView的样式
         View headerView = navigationView.getHeaderView(0);

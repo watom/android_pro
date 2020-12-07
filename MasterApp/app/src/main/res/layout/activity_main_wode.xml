@@ -55,7 +55,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -95,9 +95,9 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="135dp"
         android:layout_marginEnd="15dp"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@color/xiangyabai_white"
         app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
+        app:cardElevation="0dp"
         app:cardMaxElevation="10dp"
         app:contentPadding="20dp">
 
