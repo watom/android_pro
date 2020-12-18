@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
-import com.haitao.www.myformer.utils.Log;
+import com.haitao.www.myformer.log.Log;
 
 import java.util.HashMap;
 

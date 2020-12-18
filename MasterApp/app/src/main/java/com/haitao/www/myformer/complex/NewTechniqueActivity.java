@@ -1,24 +1,21 @@
-package com.haitao.www.myformer.structure_design;
+package com.haitao.www.myformer.complex;
 
-import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.haitao.www.myformer.R;
 import com.haitao.www.myformer.utils.ToastUtils;
 
 /**
- * Created by Administrator on 2017/11/27 0027.
+ * 新的新的技术簇，必须先弹出学习页面。
  */
-
-public class StructureDesignActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class NewTechniqueActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private String[] content;
 
     @Override
@@ -30,7 +27,7 @@ public class StructureDesignActivity extends AppCompatActivity implements Adapte
     }
 
     private void initData(ListView view) {
-        content = new String[]{"MVP架构", "MVVP架构"};
+        content = new String[]{"AR技术", "JNI和JNA技术"};
         ArrayAdapter stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,content);
         view.setAdapter(stringArrayAdapter);
         view.setOnItemClickListener(this);
@@ -40,11 +37,11 @@ public class StructureDesignActivity extends AppCompatActivity implements Adapte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String s = content[position];
         switch (s){
-            case "MVP架构":
-                startActivity(new Intent(this, StructureDesignActivity.class));
+            case "AR技术":
+                ToastUtils.showToast(NewTechniqueActivity.this,"AR技术");
                 break;
-            case "MVVP架构":
-                ToastUtils.showToast(StructureDesignActivity.this,"暂缓实现");
+            case "JNI和JNA技术":
+                ToastUtils.showToast(NewTechniqueActivity.this,"JNI和JNA技术");
                 break;
         }
     }

@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.haitao.www.myformer.R;
+import com.haitao.www.myformer.log.Log;
 
 public class ToastUtils extends Toast {
 

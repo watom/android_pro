@@ -9,7 +9,7 @@ import android.view.KeyEvent;
 import android.webkit.WebView;
 
 import com.haitao.www.myformer.R;
-import com.haitao.www.myformer.utils.Log;
+import com.haitao.www.myformer.log.Log;
 import com.haitao.www.myformer.utils.WebViewTool;
 
 import static android.view.KeyEvent.KEYCODE_BACK;

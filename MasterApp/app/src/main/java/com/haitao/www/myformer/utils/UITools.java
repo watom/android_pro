@@ -13,6 +13,8 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
 
+import com.haitao.www.myformer.log.Log;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

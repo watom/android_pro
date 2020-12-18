@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 
-import com.haitao.www.myformer.utils.Log;
+import com.haitao.www.myformer.log.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;

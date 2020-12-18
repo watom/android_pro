@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.haitao.www.myformer.R;
-import com.haitao.www.myformer.utils.Log;
+import com.haitao.www.myformer.log.Log;
 
 /**
  * Created by Administrator on 2017/12/1 0001.

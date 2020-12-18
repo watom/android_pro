@@ -19,6 +19,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.haitao.www.myformer.log.Log;
+
 /**
  * Created by wanghaitao on 2018/9/30 0011.
  * 注意：

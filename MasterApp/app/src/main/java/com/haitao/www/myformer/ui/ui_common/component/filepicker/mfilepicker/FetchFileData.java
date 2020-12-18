@@ -6,6 +6,7 @@ import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -231,7 +232,7 @@ public class FetchFileData {
                 + MediaStore.Video.Media.MIME_TYPE + "=? or "
                 + MediaStore.Video.Media.MIME_TYPE + "=? or "
                 + MediaStore.Video.Media.MIME_TYPE + "=?";
-        String[] whereArgs = {"video/mp4", "video/3gp", "video/aiv", "video/rmvb", "application/vnd.rn-realmedia", "aapplication/vnd.rn-realmedia","video/quicktime",
+        String[] whereArgs = {"video/mp4", "video/3gp", "video/aiv", "video/rmvb", "application/vnd.rn-realmedia", "aapplication/vnd.rn-realmedia", "video/quicktime",
                 "video/vob", "video/flv", "video/mkv", "video/mov", "video/mpg", "video/x-ms-wmv", "video/x-msvideo", "video/3gpp", "video/x-matroska"};
         List<File> list = new ArrayList<>();
         Cursor cursor = context.getContentResolver().query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
@@ -267,6 +268,34 @@ public class FetchFileData {
         return list;
     }
 
+    /**
+     * 4.4版本后，SAF提供统一的选择器界面，以便用户浏览其他应用提供的所有文件。
+     *
+     * @param activity
+     * @param accessType  创建的文件类型。如"image/*"
+     * @param requestCode  {@link Activity#onActivityResult}
+     */
+    public static void openFileByPrimeval(Activity activity, String accessType, int requestCode) {
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.setType(accessType);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        activity.startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * 4.4版本后，SAF提供由系统控制的创建文件。
+     * @param activity
+     * @param accessType 创建的文件类型。如"image/*"
+     * @param fileName   创建的文件名称
+     * @param requestCode {@link Activity#onActivityResult}
+     */
+    public static void createFileByPrimeval(Activity activity, String accessType, String fileName, int requestCode) {
+        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent.setType(accessType);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.putExtra(Intent.EXTRA_TITLE, fileName);
+        activity.startActivityForResult(intent, requestCode);
+    }
 
     /**
      * @param uri The Uri to check.

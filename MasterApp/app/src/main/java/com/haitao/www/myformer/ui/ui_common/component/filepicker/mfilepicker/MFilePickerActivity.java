@@ -121,7 +121,10 @@ public class MFilePickerActivity extends AppCompatActivity {
             }
         });
 
-        //打开原生的文件选择器
+        /**
+         *  打开原生的文件选择器
+         *  Storage Access Framework 存储访问框架方式访问
+         */
         openNatureFileBrowser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

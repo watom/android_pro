@@ -2,6 +2,8 @@ package com.haitao.www.myformer.utils;
 
 import android.util.ArrayMap;
 
+import com.haitao.www.myformer.log.Log;
+
 public class EmotionUtils {
     /**
      * 表情类型标志符

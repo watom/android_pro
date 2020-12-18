@@ -16,9 +16,8 @@ import android.widget.TextView;
 
 import com.dk.view.patheffect.PathTextView;
 import com.haitao.www.myformer.R;
-import com.haitao.www.myformer.utils.AppBadgeUtil;
 import com.haitao.www.myformer.utils.CountDownTimerUtils;
-import com.haitao.www.myformer.utils.Log;
+import com.haitao.www.myformer.log.Log;
 
 import projects.main.MainActivity;
 

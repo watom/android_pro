@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.haitao.www.myformer.R;
 import com.haitao.www.myformer.nettys.netty.base.BaseActivity;
-import com.haitao.www.myformer.utils.Log;
 import com.haitao.www.myformer.utils.ToastUtils;
 
 public class DesignPatternActivity extends BaseActivity {

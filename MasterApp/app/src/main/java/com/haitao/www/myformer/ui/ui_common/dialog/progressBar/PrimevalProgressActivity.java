@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.haitao.www.myformer.R;
-import com.haitao.www.myformer.utils.Log;
+import com.haitao.www.myformer.log.Log;
 
 public class PrimevalProgressActivity extends Activity{
     private ProgressBar bar1;

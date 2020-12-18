@@ -46,11 +46,12 @@ import projects.main.main_fragement.NewsFragment;
 import projects.main.main_fragement.TalkFragment;
 import projects.main.main_fragement.WodeFragment;
 
+import com.haitao.www.myformer.complex.NewTechniqueActivity;
 import com.haitao.www.myformer.function.kernel_module.barcode.activity.CaptureActivity;
 import com.haitao.www.myformer.structure_design.StructureDesignActivity;
 import com.haitao.www.myformer.utils.AppBadgeUtil;
 import com.haitao.www.myformer.utils.DataUtil;
-import com.haitao.www.myformer.utils.Log;
+import com.haitao.www.myformer.log.Log;
 import com.haitao.www.myformer.utils.ToastUtils;
 import com.haitao.www.myformer.utils.WebViewTool;
 
@@ -199,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_studio) {
-            startActivity(new Intent(MainActivity.this, SampleActivity.class));
+            startActivity(new Intent(this, SampleActivity.class));
         } else if (id == R.id.nav_source) {
 
         } else if (id == R.id.nav_stream) {
@@ -209,9 +210,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_earth) {
 
         } else if (id == R.id.nav_interest) {
-            startActivity(new Intent(MainActivity.this, CourseActivity.class));
+            startActivity(new Intent(this, CourseActivity.class));
         } else if (id == R.id.nav_favorite) {
-
+            startActivity(new Intent(this, NewTechniqueActivity.class));
         } else if (id == R.id.nav_share) {
             startActivity(new Intent(this, ShareAppActivity.class));
         } else if (id == R.id.nav_secure) {

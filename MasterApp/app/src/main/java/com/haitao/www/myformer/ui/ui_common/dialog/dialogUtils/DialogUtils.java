@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.haitao.www.myformer.R;
-import com.haitao.www.myformer.utils.Log;
+import com.haitao.www.myformer.log.Log;
 import com.haitao.www.myformer.utils.Util;
 
 

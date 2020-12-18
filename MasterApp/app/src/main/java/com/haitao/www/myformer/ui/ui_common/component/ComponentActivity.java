@@ -22,7 +22,7 @@ import com.haitao.www.myformer.ui.ui_common.moduleTest.ratingbarview.RatingBarAc
 import com.haitao.www.myformer.ui.ui_common.component.textview.SpannableStringActivity;
 import com.haitao.www.myformer.ui.ui_common.component.timepicker.DatePickerActivity;
 import com.haitao.www.myformer.ui.ui_common.component.timepicker.TimePickerActivity;
-import com.haitao.www.myformer.utils.Log;
+import com.haitao.www.myformer.log.Log;
 import com.haitao.www.myformer.utils.ToastUtils;
 
 import java.util.ArrayList;

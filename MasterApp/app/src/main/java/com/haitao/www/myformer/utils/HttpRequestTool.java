@@ -4,6 +4,8 @@ package com.haitao.www.myformer.utils;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.haitao.www.myformer.log.Log;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;

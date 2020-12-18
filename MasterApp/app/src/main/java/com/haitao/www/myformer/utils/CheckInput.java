@@ -404,7 +404,6 @@ public class CheckInput {
 //			return "手机号码不正确";
 //		}
 //		return null;
-//		
 //	}
 	
 	/**
@@ -420,7 +419,6 @@ public class CheckInput {
 			return "请输入正确的手机号";
 		}
 		return null;
-		
 	}
 	
 	/**
@@ -545,7 +543,6 @@ public class CheckInput {
 	
 	
 	public static String checkEmail(String email){
-		
 		String compare = "^\\s*\\w+(?:\\.{0,1}[\\w-]+)*@[a-zA-Z0-9]+(?:[-.][a-zA-Z0-9]+)*\\.[a-zA-Z]+\\s*$";
 		if (email.equals("")) {
 			return null;

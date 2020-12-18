@@ -1,5 +1,7 @@
 package com.haitao.www.myformer.ui.ui_common.component.filepicker.mfilepicker;
 
+import android.app.LoaderManager;
+import android.content.Loader;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;

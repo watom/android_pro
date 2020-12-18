@@ -27,7 +27,7 @@ import android.view.WindowManager;
 import android.widget.PopupWindow;
 
 import com.haitao.www.myformer.R;
-import com.haitao.www.myformer.utils.Log;
+import com.haitao.www.myformer.log.Log;
 import com.haitao.www.myformer.utils.ToastUtils;
 
 import java.lang.reflect.Field;

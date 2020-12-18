@@ -9,6 +9,8 @@ import android.preference.PreferenceManager;
 import androidx.core.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 
+import com.haitao.www.myformer.log.Log;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 

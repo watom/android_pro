@@ -270,6 +270,7 @@
         <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.SearchActivity" />
         <activity android:name=".ui.ui_common.component.filepicker.mfilepicker.SpreadActivity" />
         <activity android:name=".ui.ui_common.component.imageview.load_image.LoadImageActivity" />
+        <activity android:name=".complex.NewTechniqueActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -281,6 +282,26 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+
+        <!-- 日志系统 start -->
+        <receiver
+            android:name="com.haitao.www.myformer.log.LogReceiver"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="com.log.action.LOG_START" />
+                <action android:name="com.log.action.LOG_STOP" />
+                <action android:name="com.log.action.LOG_CLEAR" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.haitao.www.myformer.log.LogService"
+            android:permission="android.permission.READ_LOGS">
+            <intent-filter>
+                <action android:name="com.log.action.GET_LOG_SERVICE" />
+            </intent-filter>
+        </service>
+        <!-- 日志系统 end -->
     </application>
 
 </manifest>
