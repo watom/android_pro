@@ -77,6 +77,7 @@ public class FileBrowserActivity extends AppCompatActivity {
                     case R.id.menu_more:
                         //更多
                         ToastUtils.showToast(FileBrowserActivity.this, "更多");
+                        ToastUtils.showToast(FileBrowserActivity.this, "更的");
                         break;
                 }
             }

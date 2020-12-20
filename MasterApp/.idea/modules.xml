@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MasterApp.iml" filepath="$PROJECT_DIR$/MasterApp.iml" group="MasterApp" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="MasterApp/app" />
-      <module fileurl="file://$PROJECT_DIR$/draggridviewlib/draggridviewlib.iml" filepath="$PROJECT_DIR$/draggridviewlib/draggridviewlib.iml" group="MasterApp/draggridviewlib" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MasterApp.iml" filepath="$PROJECT_DIR$/.idea/modules/MasterApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MasterApp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MasterApp.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/draggridviewlib/MasterApp.draggridviewlib.iml" filepath="$PROJECT_DIR$/.idea/modules/draggridviewlib/MasterApp.draggridviewlib.iml" />
     </modules>
   </component>
 </project>
